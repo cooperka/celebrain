@@ -3,32 +3,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { setGameState } from '../actions';
-import { gameState } from '../reducers';
+import { restart } from '../actions';
 
 import './styles.css';
 
 type Props = {
-  handleStartGame: () => void,
+  handleRestart: () => void,
 };
 
 class Results extends Component<Props> {
 
   static mapDispatchToProps(dispatch) {
     return {
-      handleStartGame: () => {
-        dispatch(setGameState(gameState.MEMORIZE));
+      handleRestart: () => {
+        dispatch(restart());
       },
     };
   }
 
   render() {
-    const { handleStartGame } = this.props;
+    const { handleRestart } = this.props;
 
     return (
       <div className="Results">
         <div className="title">Results</div>
-        <button onClick={handleStartGame}>Try again</button>
+        <button onClick={handleRestart}>Try again</button>
       </div>
     );
   }

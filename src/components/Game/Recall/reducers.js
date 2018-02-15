@@ -1,8 +1,9 @@
+import { actionTypes as gameActionTypes } from '../actions';
 import { actionTypes } from './actions';
 
 const initialState = {
   currIndex: 0,
-  numItems: 1,
+  numItems: 2,
 };
 
 export function recallReducer(state = initialState, action = {}) {
@@ -12,6 +13,9 @@ export function recallReducer(state = initialState, action = {}) {
         ...state,
         currIndex: state.currIndex + 1,
       };
+
+    case gameActionTypes.RESTART:
+      return initialState;
 
     default:
       return state;

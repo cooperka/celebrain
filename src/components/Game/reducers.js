@@ -19,6 +19,9 @@ export function gameReducer(state = initialState, { type, payload } = {}) {
         currState: payload.state,
       };
 
+    case actionTypes.RESTART:
+      return initialState;
+
     default:
       return state;
   }
