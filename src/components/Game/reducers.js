@@ -1,15 +1,22 @@
 import { actionTypes } from './actions';
 
-const initialState = {
-  isActive: false,
+export const gameState = {
+  INTRO: 'INTRO',
+  MEMORIZE: 'MEMORIZE',
+  RECALL: 'RECALL',
+  RESULTS: 'RESULTS',
 };
 
-export function gameReducer(state = initialState, action = {}) {
-  switch (action.type) {
+const initialState = {
+  currState: gameState.INTRO,
+};
+
+export function gameReducer(state = initialState, { type, payload } = {}) {
+  switch (type) {
     case actionTypes.TOGGLE_GAME_STATE:
       return {
         ...state,
-        isActive: !state.isActive,
+        currState: payload.state,
       };
 
     default:

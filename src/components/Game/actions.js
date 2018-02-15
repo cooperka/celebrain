@@ -6,6 +6,6 @@ export const actionTypes = {
 
 // --- Action creators
 
-export function toggleGameState() {
-  return { type: actionTypes.TOGGLE_GAME_STATE };
+export function setGameState(state) {
+  return { type: actionTypes.TOGGLE_GAME_STATE, payload: { state } };
 }

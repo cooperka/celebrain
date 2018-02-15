@@ -45,7 +45,7 @@ exports[`renders 1`] = `
         <div
           className="link-text"
         >
-          Start!
+          Play now
         </div>
       </span>
       <span

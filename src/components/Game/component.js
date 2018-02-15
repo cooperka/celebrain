@@ -4,38 +4,45 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Memorize from './Memorize';
-import { toggleGameState } from './actions';
+import { setGameState } from './actions';
+import { gameState } from './reducers';
 
 import './styles.css';
 
 type Props = {
-  isActive: boolean,
-  handleToggleGameState: () => void,
+  currState: any,
+  handleStartGame: () => void,
+};
+
+const gameComponent = {
+  [gameState.INTRO]: () => null,
+  [gameState.MEMORIZE]: Memorize,
 };
 
 class Game extends Component<Props> {
 
   static mapStateToProps(state) {
     return {
-      isActive: state.game.isActive,
+      currState: state.game.currState,
     };
   }
 
   static mapDispatchToProps(dispatch) {
     return {
-      handleToggleGameState: () => {
-        dispatch(toggleGameState());
+      handleStartGame: () => {
+        dispatch(setGameState(gameState.MEMORIZE));
       },
     };
   }
 
   render() {
-    const { isActive, handleToggleGameState } = this.props;
+    const { currState, handleStartGame } = this.props;
+    const GameComponent = gameComponent[currState];
+    const hasBegun = currState !== gameState.INTRO;
 
     return (
       <div className="Game page">
-        <button onClick={handleToggleGameState}>{isActive ? 'Pause' : 'Play'}</button>
-        {isActive ? <Memorize /> : null}
+        {hasBegun ? <GameComponent /> : <button onClick={handleStartGame}>Start</button>}
       </div>
     );
   }

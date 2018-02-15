@@ -16,7 +16,7 @@ function Home() {
         </div>
       </div>
       <div className="buttons">
-        <NavButton bordered linkTo="/game">Start!</NavButton>
+        <NavButton bordered linkTo="/game">Play now</NavButton>
       </div>
     </div>
   );
