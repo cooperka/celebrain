@@ -5238,9 +5238,9 @@ json5@^0.5.0, json5@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
-jsondiffpatch@^0.2.4:
+jsondiffpatch@cooperka/jsondiffpatch#ba25ec9e7fb1684dfb0b5a8be3b1763bd9ab9348:
   version "0.2.5"
-  resolved "https://registry.yarnpkg.com/jsondiffpatch/-/jsondiffpatch-0.2.5.tgz#50361d995cf8c86137e8d5589f20fa5220db3511"
+  resolved "https://codeload.github.com/cooperka/jsondiffpatch/tar.gz/ba25ec9e7fb1684dfb0b5a8be3b1763bd9ab9348"
   dependencies:
     chalk "^0.5.1"
 
@@ -7523,16 +7523,16 @@ redux-devtools-dock-monitor@1.1.3:
     react-dock "^0.2.4"
     react-pure-render "^1.0.2"
 
-redux-devtools-inspector@0.11.3:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/redux-devtools-inspector/-/redux-devtools-inspector-0.11.3.tgz#f141c32f9e38d520a5ca17fef9f527609b1999bf"
+redux-devtools-inspector@cooperka/redux-devtools-inspector#cdb11f9fd2b118b62e249f9dd58329c1e8f9a639:
+  version "0.11.4"
+  resolved "https://codeload.github.com/cooperka/redux-devtools-inspector/tar.gz/cdb11f9fd2b118b62e249f9dd58329c1e8f9a639"
   dependencies:
     babel-runtime "^6.3.19"
     dateformat "^2.0.0"
     hex-rgba "^1.0.0"
     immutable "^3.7.6"
     javascript-stringify "^1.1.0"
-    jsondiffpatch "^0.2.4"
+    jsondiffpatch cooperka/jsondiffpatch#ba25ec9e7fb1684dfb0b5a8be3b1763bd9ab9348
     jss "^6.0.0"
     jss-nested "^3.0.0"
     jss-vendor-prefixer "^4.0.0"

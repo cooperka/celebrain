@@ -24,7 +24,7 @@
     "redux": "3.7.2",
     "redux-devtools": "3.4.1",
     "redux-devtools-dock-monitor": "1.1.3",
-    "redux-devtools-inspector": "0.11.3",
+    "redux-devtools-inspector": "cooperka/redux-devtools-inspector#cdb11f9fd2b118b62e249f9dd58329c1e8f9a639",
     "redux-devtools-log-monitor": "1.4.0",
     "redux-thunk": "2.2.0",
     "typeface-roboto": "0.0.54"
