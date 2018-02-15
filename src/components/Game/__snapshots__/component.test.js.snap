@@ -4,29 +4,10 @@ exports[`renders 1`] = `
 <div
   className="Game page"
 >
-  <div
-    className="title"
+  <button
+    onClick={undefined}
   >
-    Game
-  </div>
-  <div
-    className="section"
-  >
-    <div
-      className="subtitle"
-    >
-      Lorem ipsum
-    </div>
-    <div
-      className="description"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </div>
-    <button
-      onClick={undefined}
-    >
-      Play
-    </button>
-  </div>
+    Play
+  </button>
 </div>
 `;

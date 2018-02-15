@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Memorize from './Memorize';
 import { toggleGameState } from './actions';
 
 import './styles.css';
@@ -33,15 +34,8 @@ class Game extends Component<Props> {
 
     return (
       <div className="Game page">
-        <div className="title">Game</div>
-
-        <div className="section">
-          <div className="subtitle">Lorem ipsum</div>
-          <div className="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </div>
-          <button onClick={handleToggleGameState}>{isActive ? 'Pause' : 'Play'}</button>
-        </div>
+        <button onClick={handleToggleGameState}>{isActive ? 'Pause' : 'Play'}</button>
+        {isActive ? <Memorize /> : null}
       </div>
     );
   }
