@@ -15,17 +15,7 @@ exports[`renders 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/services"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
         path="/about"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/testimonials"
       />
       <Route
         component={[Function]}

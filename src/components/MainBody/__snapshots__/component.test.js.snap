@@ -2,8 +2,56 @@
 
 exports[`renders 1`] = `
 <div
-  className="MainBody"
+  className="MainBody page"
 >
-  <Hero />
+  <div
+    className="title"
+  >
+    Celebrain
+  </div>
+  <div
+    className="section"
+  >
+    <div
+      className="subtitle"
+    >
+      Improve your memory by matching celebrity names to faces.
+    </div>
+  </div>
+  <div
+    className="buttons"
+  >
+    <NavLink
+      className="MuiButtonBase-root-16 MuiButton-root-1 NavButton bordered"
+      exact={true}
+      href={undefined}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/game"
+    >
+      <span
+        className="MuiButton-label-2"
+      >
+        <div
+          className="link-text"
+        >
+          Start!
+        </div>
+      </span>
+      <span
+        className="MuiTouchRipple-root-18"
+      />
+    </NavLink>
+  </div>
 </div>
 `;
