@@ -3,7 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
 import 'typeface-roboto/index.css';
 
 import rootReducer from './reducers.index';
@@ -12,7 +14,7 @@ import App from './components/App';
 
 import './styles.css';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 function renderRoot(component) {
   // Only if document is available; skip during static builds.

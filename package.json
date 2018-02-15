@@ -22,6 +22,7 @@
     "react-router-dom": "4.2.2",
     "react-static": "5.1.8",
     "redux": "3.7.2",
+    "redux-thunk": "2.2.0",
     "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
