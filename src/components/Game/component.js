@@ -1,22 +1,51 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { toggleGameState } from './actions';
 
 import './styles.css';
 
-function Game() {
-  return (
-    <div className="Game page">
-      <div className="title">Game</div>
+type Props = {
+  isActive: boolean,
+  handleToggleGameState: () => void,
+};
 
-      <div className="section">
-        <div className="subtitle">Lorem ipsum</div>
-        <div className="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+class Game extends Component<Props> {
+
+  static mapStateToProps(state) {
+    return {
+      isActive: state.game.isActive,
+    };
+  }
+
+  static mapDispatchToProps(dispatch) {
+    return {
+      handleToggleGameState: () => {
+        dispatch(toggleGameState());
+      },
+    };
+  }
+
+  render() {
+    const { isActive, handleToggleGameState } = this.props;
+
+    return (
+      <div className="Game page">
+        <div className="title">Game</div>
+
+        <div className="section">
+          <div className="subtitle">Lorem ipsum</div>
+          <div className="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </div>
+          <button onClick={handleToggleGameState}>{isActive ? 'Pause' : 'Play'}</button>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 }
 
-export default Game;
+export default connect(Game.mapStateToProps, Game.mapDispatchToProps)(Game);

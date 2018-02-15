@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
+import { gameReducer } from './components/Game/reducers';
+
 const rootReducer = combineReducers({
-  mock: (state = {}) => state,
+  game: gameReducer,
 });
 
 export default rootReducer;
