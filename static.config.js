@@ -2,10 +2,10 @@ import React from 'react';
 
 export default {
 
-  siteRoot: 'https://lsrfocus.com',
+  siteRoot: 'https://celeb.cooperka.com',
 
   getSiteData: () => ({
-    title: 'LSR Focus',
+    title: 'Celebrain',
   }),
 
   getRoutes: () => [

@@ -1,6 +1,9 @@
-# LsrFocus.com
+# Celebrain
 
-[![Build status](https://travis-ci.org/lsrfocus/website.svg?branch=master)](https://travis-ci.org/lsrfocus/website)
+[![Build status](https://travis-ci.org/cooperka/celebrain.svg?branch=master)](https://travis-ci.org/cooperka/celebrain)
+
+Simple game to improve memory by matching celebrity names to faces.
+Freely available at <https://celeb.cooperka.com>.
 
 ## Developing
 
@@ -18,14 +21,3 @@ To deploy manually:
 ```bash
 yarn run deploy
 ```
-
-### Anything else
-
-To build locally for production:
-
-```bash
-yarn run build:snapshot
-```
-
-It uses [react-snapshot](https://github.com/geelen/react-snapshot)
-to generate static HTML pages that can be served much more easily.
