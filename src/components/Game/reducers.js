@@ -4,7 +4,7 @@ export const gameState = {
   INTRO: 'INTRO',
   MEMORIZE: 'MEMORIZE',
   RECALL: 'RECALL',
-  // RESULTS: 'RESULTS',
+  RESULTS: 'RESULTS',
 };
 
 const initialState = {

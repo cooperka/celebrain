@@ -12,7 +12,7 @@ type Props = {
   handleStartGame: () => void,
 };
 
-class Intro extends Component<Props> {
+class Results extends Component<Props> {
 
   static mapDispatchToProps(dispatch) {
     return {
@@ -26,13 +26,13 @@ class Intro extends Component<Props> {
     const { handleStartGame } = this.props;
 
     return (
-      <div className="Intro">
-        <div className="title">New game</div>
-        <button onClick={handleStartGame}>Start</button>
+      <div className="Results">
+        <div className="title">Results</div>
+        <button onClick={handleStartGame}>Try again</button>
       </div>
     );
   }
 
 }
 
-export default connect(undefined, Intro.mapDispatchToProps)(Intro);
+export default connect(undefined, Results.mapDispatchToProps)(Results);
