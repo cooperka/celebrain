@@ -3,29 +3,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 
 import 'typeface-roboto/index.css';
 
 import rootReducer from './reducers.index';
+import { configureStore } from './utils/setup-utils';
 
 import App from './components/App';
 
 import './styles.css';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-function renderRoot(component) {
-  // Only if document is available; skip during static builds.
-  if (typeof document !== 'undefined') {
-    // $FlowFixMe
-    const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
-
-    // $FlowFixMe
-    renderMethod(component, document.getElementById('root'));
-  }
-}
+const store = configureStore(rootReducer);
 
 // Enable Hot Module Replacement (HMR).
 if (module.hot) {
@@ -53,6 +41,17 @@ renderRoot(
     <App />
   </Provider>,
 );
+
+function renderRoot(component) {
+  // Only if document is available; skip during static builds.
+  if (typeof document !== 'undefined') {
+    // $FlowFixMe
+    const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+
+    // $FlowFixMe
+    renderMethod(component, document.getElementById('root'));
+  }
+}
 
 // Export top level component for static rendering.
 export default App;
