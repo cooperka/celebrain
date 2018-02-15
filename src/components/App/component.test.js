@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 import App from './component';
 
 jest.mock('../NavBar/component', () => 'NavBar');
-jest.mock('../MainBody/component', () => 'MainBody');
+jest.mock('../Home/component', () => 'Home');
 jest.mock('../Footer/component', () => 'Footer');
 
 it('renders', () => {

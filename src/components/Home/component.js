@@ -6,9 +6,9 @@ import NavButton from '../NavButton/index';
 
 import './styles.css';
 
-function MainBody() {
+function Home() {
   return (
-    <div className="MainBody page">
+    <div className="Home page">
       <div className="title">Celebrain</div>
       <div className="section">
         <div className="subtitle">
@@ -22,4 +22,4 @@ function MainBody() {
   );
 }
 
-export default MainBody;
+export default Home;

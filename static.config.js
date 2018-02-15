@@ -11,7 +11,7 @@ export default {
   getRoutes: () => [
     {
       path: '/',
-      component: 'src/components/MainBody',
+      component: 'src/components/Home',
     },
     {
       path: '/about',

@@ -1,11 +1,11 @@
-import MainBody from './components/MainBody';
+import Home from './components/Home';
 import Game from './components/Game';
 import About from './components/About';
 
 const routes = [
   {
     path: '/',
-    component: MainBody,
+    component: Home,
     displayName: 'Home',
   },
   {
