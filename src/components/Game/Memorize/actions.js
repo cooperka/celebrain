@@ -16,8 +16,8 @@ export function next() {
 
     if (nextIndex >= numItems) {
       dispatch(setGameState(gameState.RECALL));
-    } else {
-      dispatch({ type: actionTypes.MEMORIZE_NEXT });
     }
+
+    dispatch({ type: actionTypes.MEMORIZE_NEXT });
   };
 }
