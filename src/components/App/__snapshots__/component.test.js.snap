@@ -15,6 +15,11 @@ exports[`renders 1`] = `
       <Route
         component={[Function]}
         exact={true}
+        path="/game"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
         path="/about"
       />
       <Route
