@@ -27,13 +27,23 @@ function renderRoot(component) {
 
 // Enable Hot Module Replacement (HMR).
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept('./components/App/index', () => {
+    // eslint-disable-next-line global-require
+    const UpdatedApp = require('./components/App/index').default;
 
-  // TODO: This doesn't work.
-  // module.hot.accept('./components/App/component', () => {
-  //   // eslint-disable-next-line global-require
-  //   renderRoot(require('./components/App/component').default);
-  // });
+    renderRoot(
+      <Provider store={store}>
+        <UpdatedApp />
+      </Provider>,
+    );
+  });
+
+  module.hot.accept('./reducers.index', () => {
+    // eslint-disable-next-line global-require
+    const updatedReducer = require('./reducers.index').default;
+
+    store.replaceReducer(updatedReducer);
+  });
 }
 
 renderRoot(
