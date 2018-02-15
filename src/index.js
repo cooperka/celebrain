@@ -2,11 +2,17 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import 'typeface-roboto/index.css';
+
+import rootReducer from './reducers.index';
 
 import App from './components/App';
 
 import './styles.css';
+
+const store = createStore(rootReducer);
 
 function renderRoot(component) {
   // Only if document is available; skip during static builds.
@@ -30,7 +36,11 @@ if (module.hot) {
   // });
 }
 
-renderRoot(<App />);
+renderRoot(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+);
 
 // Export top level component for static rendering.
 export default App;
