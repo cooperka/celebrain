@@ -1,3 +1,6 @@
+import { setGameState } from '../actions';
+import { gameState } from '../reducers';
+
 // --- Action types
 
 export const actionTypes = {
@@ -7,5 +10,14 @@ export const actionTypes = {
 // --- Action creators
 
 export function next() {
-  return { type: actionTypes.MEMORIZE_NEXT };
+  return (dispatch, getState) => {
+    const { memorize: { currIndex, numItems } } = getState();
+    const nextIndex = currIndex + 1;
+
+    if (nextIndex >= numItems) {
+      dispatch(setGameState(gameState.RECALL));
+    } else {
+      dispatch({ type: actionTypes.MEMORIZE_NEXT });
+    }
+  };
 }

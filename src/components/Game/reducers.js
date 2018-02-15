@@ -3,7 +3,7 @@ import { actionTypes } from './actions';
 export const gameState = {
   INTRO: 'INTRO',
   MEMORIZE: 'MEMORIZE',
-  // RECALL: 'RECALL',
+  RECALL: 'RECALL',
   // RESULTS: 'RESULTS',
 };
 

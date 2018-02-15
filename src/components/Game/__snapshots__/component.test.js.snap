@@ -15,3 +15,11 @@ exports[`renders in state MEMORIZE 1`] = `
   <Memorize />
 </div>
 `;
+
+exports[`renders in state RECALL 1`] = `
+<div
+  className="Game page"
+>
+  <Recall />
+</div>
+`;

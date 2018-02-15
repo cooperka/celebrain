@@ -10,6 +10,7 @@ import { gameState } from './reducers';
 
 jest.mock('./Intro', () => 'Intro');
 jest.mock('./Memorize', () => 'Memorize');
+jest.mock('./Recall', () => 'Recall');
 
 describe('renders in state', () => {
   R.flip(R.forEachObjIndexed)(gameState, (state) => {

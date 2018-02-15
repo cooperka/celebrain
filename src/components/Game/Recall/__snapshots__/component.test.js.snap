@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div
+  className="Recall"
+>
+  <div
+    className="title"
+  >
+    Recall
+  </div>
+  <div
+    className="section"
+  >
+    <img
+      alt="Celebrity"
+      src="http://via.placeholder.com/300x300"
+    />
+    <input
+      className="subtitle"
+      placeholder="Name"
+    />
+  </div>
+  <div
+    className="section"
+  >
+    <button
+      onClick={undefined}
+    >
+      Next 
+      NaN / undefined
+    </button>
+  </div>
+</div>
+`;

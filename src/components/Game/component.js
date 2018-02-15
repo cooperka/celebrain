@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Intro from './Intro';
 import Memorize from './Memorize';
+import Recall from './Recall';
 import { gameState } from './reducers';
 
 import './styles.css';
@@ -16,6 +17,7 @@ type Props = {
 const gameComponent = {
   [gameState.INTRO]: Intro,
   [gameState.MEMORIZE]: Memorize,
+  [gameState.RECALL]: Recall,
 };
 
 class Game extends Component<Props> {
