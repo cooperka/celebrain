@@ -3,9 +3,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Game from './component';
+import Recall from './component';
 
 it('renders', () => {
-  const tree = renderer.create(<Game />);
+  const tree = renderer.create(<Recall currIndex={0} numItems={1} />);
   expect(tree.toJSON()).toMatchSnapshot();
 });

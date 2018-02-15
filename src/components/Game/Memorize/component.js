@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { next } from './actions';
 
+import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
@@ -32,13 +33,14 @@ class Memorize extends Component<Props> {
 
   render() {
     const { currIndex, numItems, handleNext } = this.props;
+    const currImage = imageData[currIndex];
 
     return (
       <div className="Memorize">
         <div className="title">Memorize</div>
         <div className="section">
-          <img src="http://via.placeholder.com/300x300" alt="Celebrity" />
-          <div className="subtitle">Name</div>
+          <img src={`/celebs/${currImage.filename}`} alt="Celebrity" />
+          <div className="subtitle">{currImage.name}</div>
         </div>
         <div className="section">
           <button onClick={handleNext}>Next {`${currIndex + 1} / ${numItems}`}</button>

@@ -14,12 +14,12 @@ exports[`renders 1`] = `
   >
     <img
       alt="Celebrity"
-      src="http://via.placeholder.com/300x300"
+      src="/celebs/aaliyah.jpg"
     />
     <div
       className="subtitle"
     >
-      Name
+      Aaliyah
     </div>
   </div>
   <div
@@ -29,7 +29,7 @@ exports[`renders 1`] = `
       onClick={undefined}
     >
       Next 
-      NaN / undefined
+      1 / 1
     </button>
   </div>
 </div>

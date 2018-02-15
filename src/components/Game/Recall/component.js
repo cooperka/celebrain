@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { next } from './actions';
 
+import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
@@ -32,12 +33,14 @@ class Recall extends Component<Props> {
 
   render() {
     const { currIndex, numItems, handleNext } = this.props;
+    const currImage = imageData[currIndex];
 
     return (
       <div className="Recall">
         <div className="title">Recall</div>
         <div className="section">
-          <img src="http://via.placeholder.com/300x300" alt="Celebrity" />
+          <img src={`/celebs/${currImage.filename}`} alt="Celebrity" />
+          <br />
           <input className="subtitle" placeholder="Name" />
         </div>
         <div className="section">
