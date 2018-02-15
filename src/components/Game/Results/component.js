@@ -8,10 +8,17 @@ import { restart } from '../actions';
 import './styles.css';
 
 type Props = {
+  inputs: any,
   handleRestart: () => void,
 };
 
 class Results extends Component<Props> {
+
+  static mapStateToProps(state) {
+    return {
+      inputs: state.recall.inputs,
+    };
+  }
 
   static mapDispatchToProps(dispatch) {
     return {
@@ -21,12 +28,19 @@ class Results extends Component<Props> {
     };
   }
 
+  renderGuess(guess, index) {
+    return (
+      <div className="guess" key={index}>{guess}</div>
+    );
+  }
+
   render() {
-    const { handleRestart } = this.props;
+    const { inputs, handleRestart } = this.props;
 
     return (
       <div className="Results">
         <div className="title">Results</div>
+        {inputs.map(this.renderGuess)}
         <button onClick={handleRestart}>Try again</button>
       </div>
     );
@@ -34,4 +48,4 @@ class Results extends Component<Props> {
 
 }
 
-export default connect(undefined, Results.mapDispatchToProps)(Results);
+export default connect(Results.mapStateToProps, Results.mapDispatchToProps)(Results);
