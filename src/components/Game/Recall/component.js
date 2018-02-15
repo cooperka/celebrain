@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { next } from './actions';
+import { next, changedInputText } from './actions';
 
 import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
@@ -11,7 +11,10 @@ import './styles.css';
 type Props = {
   currIndex: number,
   numItems: number,
+  inputText: string,
+
   handleNext: () => void,
+  handleInputText: () => void,
 };
 
 class Recall extends Component<Props> {
@@ -20,6 +23,7 @@ class Recall extends Component<Props> {
     return {
       currIndex: state.recall.currIndex,
       numItems: state.recall.numItems,
+      inputText: state.recall.inputText,
     };
   }
 
@@ -28,11 +32,14 @@ class Recall extends Component<Props> {
       handleNext: () => {
         dispatch(next());
       },
+      handleInputText: (event) => {
+        dispatch(changedInputText(event.target.value));
+      },
     };
   }
 
   render() {
-    const { currIndex, numItems, handleNext } = this.props;
+    const { currIndex, numItems, inputText, handleNext, handleInputText } = this.props;
     const currImage = imageData[currIndex];
 
     return (
@@ -41,7 +48,7 @@ class Recall extends Component<Props> {
         <div className="section">
           <img src={`/celebs/${currImage.filename}`} alt="Celebrity" />
           <br />
-          <input className="subtitle" placeholder="Name" />
+          <input className="subtitle" placeholder="Name" value={inputText} onChange={handleInputText} />
         </div>
         <div className="section">
           <button onClick={handleNext}>Next {`${currIndex + 1} / ${numItems}`}</button>

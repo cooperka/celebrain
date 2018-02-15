@@ -6,8 +6,8 @@ const initialState = {
   numItems: 2,
 };
 
-export function memorizeReducer(state = initialState, action = {}) {
-  switch (action.type) {
+export function memorizeReducer(state = initialState, { type } = {}) {
+  switch (type) {
     case actionTypes.MEMORIZE_NEXT:
       return {
         ...state,
