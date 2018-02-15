@@ -21,5 +21,17 @@ export function configureStore(rootReducer) {
 
   const store = createStore(rootReducer, storeEnhancer);
 
+  configureDebugging(store);
+
   return store;
+}
+
+/**
+ * Set the `state` var for Chrome console debugging.
+ */
+function configureDebugging(store) {
+  if (IS_DEV) {
+    Object.defineProperty(window, 'state', { get: () => store.getState() });
+    global.dispatch = store.dispatch;
+  }
 }
