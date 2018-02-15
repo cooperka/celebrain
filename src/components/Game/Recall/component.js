@@ -9,8 +9,8 @@ import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
+  imageOrder: any,
   currIndex: number,
-  numItems: number,
   inputText: string,
 
   handleNext: () => void,
@@ -21,8 +21,8 @@ class Recall extends Component<Props> {
 
   static mapStateToProps(state) {
     return {
+      imageOrder: state.game.imageOrder,
       currIndex: state.recall.currIndex,
-      numItems: state.recall.numItems,
       inputText: state.recall.inputText,
     };
   }
@@ -39,8 +39,12 @@ class Recall extends Component<Props> {
   }
 
   render() {
-    const { currIndex, numItems, inputText, handleNext, handleInputText } = this.props;
-    const currImage = imageData[currIndex];
+    const { imageOrder, currIndex, inputText, handleNext, handleInputText } = this.props;
+    const numItems = imageOrder.length;
+
+    if (currIndex >= numItems) return null;
+
+    const currImage = imageData[imageOrder[currIndex]];
 
     return (
       <div className="Recall">

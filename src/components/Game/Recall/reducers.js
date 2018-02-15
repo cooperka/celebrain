@@ -5,7 +5,6 @@ import { actionTypes } from './actions';
 
 const initialState = {
   currIndex: 0,
-  numItems: 2,
 
   inputText: '',
   inputs: Immutable.List(),

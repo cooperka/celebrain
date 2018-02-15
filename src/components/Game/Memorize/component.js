@@ -9,8 +9,8 @@ import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
+  imageOrder: any,
   currIndex: number,
-  numItems: number,
   handleNext: () => void,
 };
 
@@ -18,8 +18,8 @@ class Memorize extends Component<Props> {
 
   static mapStateToProps(state) {
     return {
+      imageOrder: state.game.imageOrder,
       currIndex: state.memorize.currIndex,
-      numItems: state.memorize.numItems,
     };
   }
 
@@ -32,8 +32,12 @@ class Memorize extends Component<Props> {
   }
 
   render() {
-    const { currIndex, numItems, handleNext } = this.props;
-    const currImage = imageData[currIndex];
+    const { imageOrder, currIndex, handleNext } = this.props;
+    const numItems = imageOrder.length;
+
+    if (currIndex >= numItems) return null;
+
+    const currImage = imageData[imageOrder[currIndex]];
 
     return (
       <div className="Memorize">

@@ -12,7 +12,8 @@ export const actionTypes = {
 
 export function next() {
   return (dispatch, getState) => {
-    const { recall: { currIndex, numItems } } = getState();
+    const { game: { imageOrder }, recall: { currIndex } } = getState();
+    const numItems = imageOrder.length;
     const nextIndex = currIndex + 1;
 
     if (nextIndex >= numItems) {

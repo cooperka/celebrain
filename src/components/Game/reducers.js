@@ -9,6 +9,7 @@ export const gameState = {
 
 const initialState = {
   currState: gameState.INTRO,
+  imageOrder: [1, 0],
 };
 
 export function gameReducer(state = initialState, { type, payload } = {}) {

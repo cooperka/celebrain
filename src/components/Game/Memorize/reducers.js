@@ -3,7 +3,6 @@ import { actionTypes } from './actions';
 
 const initialState = {
   currIndex: 0,
-  numItems: 2,
 };
 
 export function memorizeReducer(state = initialState, { type } = {}) {
