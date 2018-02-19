@@ -4,13 +4,12 @@ defmodule WikiFetch do
   Documentation for WikiFetch.
   """
 
-  @expected_fields ~w(
-    login public_repos public_gists followers following
-  )
+  @category "American_male_film_actors"
+  @limit 5
 
-  def get_username do
-    response = fetch! "https://api.github.com/users/cooperka"
-    response[:login]
+  def get_members do
+    response = fetch! "https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}"
+    get_in response, ["query", "categorymembers"]
   end
 
   @doc """
@@ -19,7 +18,7 @@ defmodule WikiFetch do
   ## Examples
 
       iex> response = WikiFetch.fetch! "https://api.github.com/users/cooperka"
-      iex> response[:login]
+      iex> get_in response, ["login"]
       "cooperka"
 
   """
@@ -29,6 +28,8 @@ defmodule WikiFetch do
   end
 
   def fetch url do
+    IO.puts "GET #{url}"
+
     case HTTPoison.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, decode body}
@@ -42,8 +43,6 @@ defmodule WikiFetch do
   defp decode body do
     body
     |> Poison.decode!
-    |> Map.take(@expected_fields)
-    |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
   end
 
 end
