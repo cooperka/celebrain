@@ -13,6 +13,17 @@ defmodule WikiFetch.Utils do
     |> Enum.reduce(fn id, reduction -> "#{reduction}|#{id}" end)
   end
 
+  def fetch_wiki! params do
+    response = fetch! "https://en.wikipedia.org/w/api.php?#{params}"
+
+    warnings = response["warnings"]
+    if warnings != nil do
+      IO.puts IO.ANSI.light_yellow() <> inspect warnings
+    end
+
+    response
+  end
+
   @doc """
   Fetch and parse a JSON API response.
 

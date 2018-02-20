@@ -30,7 +30,7 @@ defmodule WikiFetch do
       nil -> ""
       _ -> "&cmcontinue=#{cmcontinue}"
     end
-    response = fetch! "https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}#{extra_params}"
+    response = fetch_wiki! "action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}#{extra_params}"
 
     # Save data to a map indexed by page ID.
     new_members = response["query"]["categorymembers"]
@@ -51,7 +51,7 @@ defmodule WikiFetch do
     ids = members
     |> get_member_id_string()
 
-    response = fetch! "https://en.wikipedia.org/w/api.php?action=query&format=json&pageids=#{ids}&prop=pageimages&pithumbsize=#{@thumbsize}"
+    response = fetch_wiki! "action=query&format=json&pageids=#{ids}&prop=pageimages&pithumbsize=#{@thumbsize}"
 
     # Save data to a map indexed by page ID.
     response["query"]["pages"]
