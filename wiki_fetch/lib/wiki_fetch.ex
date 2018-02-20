@@ -8,8 +8,8 @@ defmodule WikiFetch do
   # American_male_film_actors
   # American_film_actresses
   @category "American_male_film_actors" # Wikipedia category to pull from.
-  @page_size 200 # Fetch this many at a time from Wikipedia (max is 500).
-  @members_cap 400 # Halt once we get this many (in case there are thousands of members).
+  @page_size 100 # Fetch this many at a time from Wikipedia (max is 500).
+  @members_cap 80 # Halt once we get this many (in case there are thousands of members).
   @thumbsize 800 # Max dimension size (either width or height) for images.
 
   @spec get_wiki_data() :: [%{}]
@@ -40,7 +40,9 @@ defmodule WikiFetch do
     # Save data to a map indexed by page ID.
     new_members = response["query"]["categorymembers"]
     |> Enum.filter(fn(member) -> member["ns"] == 0 end)
-    |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{name: member["title"]}) end)
+    |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{
+      name: member["title"],
+    }) end)
 
     members = members
     |> Map.merge(new_members)
@@ -69,7 +71,11 @@ defmodule WikiFetch do
 
     # Save data to a map indexed by page ID.
     new_images = response["query"]["pages"]
-    |> Enum.reduce(%{}, fn({key, page}, reduction) -> Map.put(reduction, String.to_integer(key), %{image: page["pageimage"]}) end)
+    |> Enum.reduce(%{}, fn({key, page}, reduction) -> Map.put(reduction, String.to_integer(key), %{
+      image: page["thumbnail"]["source"],
+      width: page["thumbnail"]["width"],
+      height: page["thumbnail"]["height"],
+    }) end)
 
     images = images
     |> Map.merge(new_images)
