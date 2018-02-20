@@ -40,6 +40,7 @@ defmodule WikiFetch do
     # Save data to a map indexed by page ID.
     new_members = response["query"]["categorymembers"]
     |> Enum.filter(fn(member) -> member["ns"] == 0 end)
+    |> Enum.filter(fn(member) -> !(member["title"] =~ ~r/ and /) end)
     |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{
       name: member["title"],
     }) end)
