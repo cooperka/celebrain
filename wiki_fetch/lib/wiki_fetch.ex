@@ -9,6 +9,7 @@ defmodule WikiFetch do
   @limit 5
   @thumbsize 800
 
+  @spec get_wiki_data() :: [%{}]
   def get_wiki_data do
     members = get_members()
     images = get_images(members)
@@ -23,6 +24,7 @@ defmodule WikiFetch do
     end)
   end
 
+  @spec get_members() :: %{}
   def get_members do
     response = fetch! "https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}"
 
@@ -31,6 +33,7 @@ defmodule WikiFetch do
     |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{name: member["title"]}) end)
   end
 
+  @spec get_images(%{}) :: %{}
   def get_images members do
     ids = members
     |> get_member_id_string()

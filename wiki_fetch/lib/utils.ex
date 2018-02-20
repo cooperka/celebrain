@@ -6,6 +6,7 @@ defmodule WikiFetch.Utils do
       iex> WikiFetch.Utils.get_member_id_string %{a: %{}, b: %{}}
       "a|b"
   """
+  @spec get_member_id_string(%{}) :: String.t
   def get_member_id_string members do
     members
     |> Map.keys()
