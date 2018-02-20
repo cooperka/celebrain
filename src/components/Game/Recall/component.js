@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 
 import { next, changedInputText } from './actions';
 
-import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
+  imageData: any,
+
   imageOrder: any,
   currIndex: number,
   inputText: string,
@@ -39,18 +40,18 @@ class Recall extends Component<Props> {
   }
 
   render() {
-    const { imageOrder, currIndex, inputText, handleNext, handleInputText } = this.props;
+    const { imageData, imageOrder, currIndex, inputText, handleNext, handleInputText } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
 
-    const currImage = imageData[imageOrder[currIndex]];
+    const currCeleb = imageData[imageOrder[currIndex]];
 
     return (
       <div className="Recall">
         <div className="title">Recall</div>
         <div className="section">
-          <img src={`/celebs/${currImage.filename}`} alt="Celebrity" />
+          <img src={currCeleb.image} alt="Celebrity" />
           <br />
           <input className="subtitle" placeholder="Name" value={inputText} onChange={handleInputText} />
         </div>

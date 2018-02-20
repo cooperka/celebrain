@@ -9,6 +9,7 @@ import Recall from './Recall';
 import Results from './Results';
 import { gameState } from './reducers';
 
+import imageData from '../../../public/celebs.json';
 import './styles.css';
 
 type Props = {
@@ -36,7 +37,7 @@ class Game extends Component<Props> {
 
     return (
       <div className="Game page">
-        <GameComponent />
+        <GameComponent imageData={imageData} />
       </div>
     );
   }

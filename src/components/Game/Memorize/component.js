@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 
 import { next } from './actions';
 
-import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
+  imageData: any,
+
   imageOrder: any,
   currIndex: number,
   handleNext: () => void,
@@ -32,19 +33,19 @@ class Memorize extends Component<Props> {
   }
 
   render() {
-    const { imageOrder, currIndex, handleNext } = this.props;
+    const { imageData, imageOrder, currIndex, handleNext } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
 
-    const currImage = imageData[imageOrder[currIndex]];
+    const currCeleb = imageData[imageOrder[currIndex]];
 
     return (
       <div className="Memorize">
         <div className="title">Memorize</div>
         <div className="section">
-          <img src={`/celebs/${currImage.filename}`} alt="Celebrity" />
-          <div className="subtitle">{currImage.name}</div>
+          <img src={currCeleb.image} alt="Celebrity" />
+          <div className="subtitle">{currCeleb.name}</div>
         </div>
         <div className="section">
           <button onClick={handleNext}>Next {`${currIndex + 1} / ${numItems}`}</button>

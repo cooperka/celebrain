@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 
 import { restart } from '../actions';
 
-import imageData from '../../../../public/celebs/attribs';
 import './styles.css';
 
 type Props = {
+  imageData: any,
+
   imageOrder: any,
   inputs: any,
 
@@ -33,7 +34,7 @@ class Results extends Component<Props> {
   }
 
   renderGuess(guess = '', index) {
-    const { imageOrder } = this.props;
+    const { imageData, imageOrder } = this.props;
     const actualName = imageData[imageOrder[index]].name || '';
     const isMatch = guess.toLowerCase() === actualName.toLowerCase();
 
