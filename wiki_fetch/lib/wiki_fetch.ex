@@ -8,8 +8,8 @@ defmodule WikiFetch do
   # American_male_film_actors
   # American_film_actresses
   @category "American_male_film_actors" # Wikipedia category to pull from.
-  @page_size 100 # Fetch this many at a time from Wikipedia (max is 500).
-  @members_cap 80 # Halt once we get this many (in case there are thousands of members).
+  @page_size 500 # Fetch this many at a time from Wikipedia (max is 500).
+  @members_cap 100 # Halt once we get this many (in case there are thousands of members).
   @thumbsize 800 # Max dimension size (either width or height) for images.
 
   @spec get_wiki_data() :: [%{}]
@@ -39,10 +39,13 @@ defmodule WikiFetch do
 
     # Save data to a map indexed by page ID.
     new_members = response["query"]["categorymembers"]
+    # Only include ns 0 (Wikipedia Articles).
     |> Enum.filter(fn(member) -> member["ns"] == 0 end)
+    # Ignore certain types of names like "Abbott and Costello".
     |> Enum.filter(fn(member) -> !(member["title"] =~ ~r/ and /) end)
     |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{
-      name: member["title"],
+      # Remove any trailing annotation (e.g. "(Actor)").
+      name: String.replace(member["title"], ~r/ \(.*/, ""),
     }) end)
 
     members = members
