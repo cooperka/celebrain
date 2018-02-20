@@ -14,7 +14,7 @@ defmodule WikiFetch do
     members = get_members()
     images = get_images(members)
 
-    images
+    data = images
     # Only keep members with valid images.
     |> Enum.filter(fn({_, data}) -> data[:image] != nil end)
     # Merge all relevant data into one map.
@@ -22,6 +22,8 @@ defmodule WikiFetch do
       Map.merge(data, members[key])
       |> Map.put(:id, key)
     end)
+
+    File.write!("data.json", Poison.encode!(data, pretty: true), [:binary])
   end
 
   @spec get_members() :: %{}
