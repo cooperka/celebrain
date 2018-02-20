@@ -12,7 +12,7 @@ defmodule WikiFetch do
   @members_cap 100 # Halt once we get this many (in case there are thousands of members).
   @thumbsize 800 # Max dimension size (either width or height) for images.
 
-  @spec get_wiki_data() :: [%{}]
+  @spec get_wiki_data() :: :ok
   def get_wiki_data do
     members = get_members()
     images = get_images(members)
@@ -30,10 +30,10 @@ defmodule WikiFetch do
   end
 
   @spec get_members() :: %{}
-  def get_members(members \\ %{}, cmcontinue \\ nil) do
-    extra_params = case cmcontinue do
+  def get_members(members \\ %{}, continue_key \\ nil) do
+    extra_params = case continue_key do
       nil -> ""
-      _ -> "&cmcontinue=#{cmcontinue}"
+      _ -> "&cmcontinue=#{continue_key}"
     end
     response = fetch_wiki! "action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@page_size}#{extra_params}"
 
@@ -51,12 +51,13 @@ defmodule WikiFetch do
     members = members
     |> Map.merge(new_members)
 
-    if @members_cap != 0 && map_size(members) >= @members_cap do
+    if @members_cap > 0 && map_size(members) >= @members_cap do
       members
     else
+      # Fetch the next page if there is one.
       case response["continue"]["cmcontinue"] do
         nil -> members
-        cmcontinue -> get_members(members, cmcontinue)
+        continue_key -> get_members(members, continue_key)
       end
     end
   end
@@ -64,7 +65,7 @@ defmodule WikiFetch do
   @spec get_images(%{}) :: %{}
   def get_images(members, images \\ %{}) do
     # Max of 50 images per request.
-    {first_50, remaining} = Enum.split(members, 50)
+    {first_50, remaining_members} = Enum.split(members, 50)
 
     ids = first_50
     # Put the tuples from Enum.split back into a map.
@@ -84,9 +85,9 @@ defmodule WikiFetch do
     images = images
     |> Map.merge(new_images)
 
-    case remaining do
+    case remaining_members do
       [] -> images
-      _ -> get_images(remaining, images)
+      _ -> get_images(remaining_members, images)
     end
   end
 
