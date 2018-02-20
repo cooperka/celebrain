@@ -5,9 +5,12 @@ defmodule WikiFetch do
   Documentation for WikiFetch.
   """
 
-  @category "Physics"
-  @limit 50
-  @thumbsize 800
+  # American_male_film_actors
+  # American_film_actresses
+  @category "American_male_film_actors" # Wikipedia category to pull from.
+  @page_size 200 # Fetch this many at a time from Wikipedia (max is 500).
+  @members_cap 400 # Halt once we get this many (in case there are thousands of members).
+  @thumbsize 800 # Max dimension size (either width or height) for images.
 
   @spec get_wiki_data() :: [%{}]
   def get_wiki_data do
@@ -32,7 +35,7 @@ defmodule WikiFetch do
       nil -> ""
       _ -> "&cmcontinue=#{cmcontinue}"
     end
-    response = fetch_wiki! "action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}#{extra_params}"
+    response = fetch_wiki! "action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@page_size}#{extra_params}"
 
     # Save data to a map indexed by page ID.
     new_members = response["query"]["categorymembers"]
@@ -42,9 +45,13 @@ defmodule WikiFetch do
     members = members
     |> Map.merge(new_members)
 
-    case response["continue"]["cmcontinue"] do
-      nil -> members
-      cmcontinue -> get_members(members, cmcontinue)
+    if @members_cap != 0 && map_size(members) >= @members_cap do
+      members
+    else
+      case response["continue"]["cmcontinue"] do
+        nil -> members
+        cmcontinue -> get_members(members, cmcontinue)
+      end
     end
   end
 
