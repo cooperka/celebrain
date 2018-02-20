@@ -5,8 +5,8 @@ defmodule WikiFetch do
   Documentation for WikiFetch.
   """
 
-  @category "American_male_film_actors"
-  @limit 5
+  @category "Physics"
+  @limit 50
   @thumbsize 800
 
   @spec get_wiki_data() :: [%{}]
@@ -25,13 +25,25 @@ defmodule WikiFetch do
   end
 
   @spec get_members() :: %{}
-  def get_members do
-    response = fetch! "https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}"
+  def get_members(members \\ %{}, cmcontinue \\ nil) do
+    extra_params = case cmcontinue do
+      nil -> ""
+      _ -> "&cmcontinue=#{cmcontinue}"
+    end
+    response = fetch! "https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@limit}#{extra_params}"
 
     # Save data to a map indexed by page ID.
-    response["query"]["categorymembers"]
+    new_members = response["query"]["categorymembers"]
     |> Enum.filter(fn(member) -> member["ns"] == 0 end)
     |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{name: member["title"]}) end)
+
+    members = members
+    |> Map.merge(new_members)
+
+    case response["continue"]["cmcontinue"] do
+      nil -> members
+      cmcontinue -> get_members(members, cmcontinue)
+    end
   end
 
   @spec get_images(%{}) :: %{}
