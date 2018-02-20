@@ -3,23 +3,12 @@ defmodule WikiFetch.Utils do
   @doc """
   ## Examples
 
-      iex> WikiFetch.Utils.get_images %{"123" => %{"pageimage" => "/foo"}, "456" => %{}}
-      ["/foo", nil]
+      iex> WikiFetch.Utils.get_member_id_string %{a: %{}, b: %{}}
+      "a|b"
   """
-  def get_images pages do
-    pages
-    |> Enum.map(fn {_, page} -> page["pageimage"] end)
-  end
-
-  @doc """
-  ## Examples
-
-      iex> WikiFetch.Utils.get_member_ids [%{"pageid" => 123}, %{"pageid" => 456}]
-      "123|456"
-  """
-  def get_member_ids ids do
-    ids
-    |> Enum.map(fn member -> member["pageid"] end)
+  def get_member_id_string members do
+    members
+    |> Map.keys()
     |> Enum.reduce(fn id, reduction -> "#{reduction}|#{id}" end)
   end
 
