@@ -28,7 +28,8 @@
     "redux-devtools-inspector": "cooperka/redux-devtools-inspector#cdb11f9fd2b118b62e249f9dd58329c1e8f9a639",
     "redux-devtools-log-monitor": "1.4.0",
     "redux-thunk": "2.2.0",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.54",
+    "unique-random": "1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.1",

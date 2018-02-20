@@ -1,8 +1,12 @@
 import { times } from 'ramda';
+import uniqueRandFactory from 'unique-random';
 
 import { actionTypes } from './actions';
 
 import imageData from '../../../public/celebs.json';
+
+const numCelebs = imageData.length;
+const getUniqueRand = uniqueRandFactory(0, numCelebs - 1);
 
 export const gameState = {
   INTRO: 'INTRO',
@@ -17,19 +21,13 @@ const initialState = {
 };
 
 /**
- * @returns {array} An array of X random numbers,
+ * @returns {array} An array of X unique random numbers,
  * each based on the total number of possible celebs.
  */
 function getRandomOrder(numQuestions = 5) {
-  const numCelebs = imageData.length;
-  return times(() => getRandomInt(numCelebs), numQuestions);
-}
-
-/**
- * @returns {number} A random integer between 0 and (max - 1).
- */
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+  const order = times(() => getUniqueRand(), numQuestions);
+  console.debug('Order:', order);
+  return order;
 }
 
 export function gameReducer(state = initialState, { type, payload } = {}) {
