@@ -47,15 +47,28 @@ defmodule WikiFetch do
   end
 
   @spec get_images(%{}) :: %{}
-  def get_images members do
-    ids = members
+  def get_images(members, images \\ %{}) do
+    # Max of 50 images per request.
+    {first_50, remaining} = Enum.split(members, 50)
+
+    ids = first_50
+    # Put the tuples from Enum.split back into a map.
+    |> Map.new
     |> get_member_id_string()
 
     response = fetch_wiki! "action=query&format=json&pageids=#{ids}&prop=pageimages&pithumbsize=#{@thumbsize}"
 
     # Save data to a map indexed by page ID.
-    response["query"]["pages"]
+    new_images = response["query"]["pages"]
     |> Enum.reduce(%{}, fn({key, page}, reduction) -> Map.put(reduction, String.to_integer(key), %{image: page["pageimage"]}) end)
+
+    images = images
+    |> Map.merge(new_images)
+
+    case remaining do
+      [] -> images
+      _ -> get_images(remaining, images)
+    end
   end
 
 end
