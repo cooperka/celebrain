@@ -18,6 +18,7 @@ type Props = {
 
   handleNext: () => void,
   handleInputText: () => void,
+  handleKeyPress: () => void,
 };
 
 class Recall extends Component<Props> {
@@ -38,11 +39,19 @@ class Recall extends Component<Props> {
       handleInputText: (event) => {
         dispatch(changedInputText(event.target.value));
       },
+      handleKeyPress: (event) => {
+        if (event.key === 'Enter') {
+          dispatch(next());
+        }
+      },
     };
   }
 
   render() {
-    const { classes, imageData, imageOrder, currIndex, inputText, handleNext, handleInputText } = this.props;
+    const {
+      classes, imageData, imageOrder, currIndex, inputText,
+      handleNext, handleInputText, handleKeyPress,
+    } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
@@ -55,7 +64,13 @@ class Recall extends Component<Props> {
         <div className="section">
           <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
           <br />
-          <TextField placeholder="Name" value={inputText} onChange={handleInputText} autoFocus />
+          <TextField
+            placeholder="Name"
+            value={inputText}
+            onChange={handleInputText}
+            onKeyPress={handleKeyPress}
+            autoFocus
+          />
         </div>
         <div className="section">
           <Button onClick={handleNext}>Next {`(${currIndex + 1}/${numItems})`}</Button>
