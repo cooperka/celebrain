@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from 'material-ui/styles';
 
 import Intro from './Intro';
 import Memorize from './Memorize';
@@ -13,6 +14,8 @@ import imageData from '../../../public/celebs.json';
 import './styles.css';
 
 type Props = {
+  classes: any,
+
   currState: any,
 };
 
@@ -23,6 +26,12 @@ const gameComponent = {
   [gameState.RESULTS]: Results,
 };
 
+const styles = (theme) => ({
+  shadowed: {
+    boxShadow: theme.shadows[2],
+  },
+});
+
 class Game extends Component<Props> {
 
   static mapStateToProps(state) {
@@ -32,17 +41,18 @@ class Game extends Component<Props> {
   }
 
   render() {
-    const { currState } = this.props;
+    const { classes, currState } = this.props;
     const GameComponent = gameComponent[currState];
 
     return (
       <div className="Game page">
-        <GameComponent imageData={imageData} />
+        <GameComponent imageData={imageData} classes={classes} />
       </div>
     );
   }
 
 }
 
+const styledGame = withStyles(styles)(Game);
 // $FlowFixMe
-export default connect(Game.mapStateToProps)(Game);
+export default connect(Game.mapStateToProps)(styledGame);

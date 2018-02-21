@@ -9,6 +9,7 @@ import { next, changedInputText } from './actions';
 import './styles.css';
 
 type Props = {
+  classes: any,
   imageData: any,
 
   imageOrder: any,
@@ -41,7 +42,7 @@ class Recall extends Component<Props> {
   }
 
   render() {
-    const { imageData, imageOrder, currIndex, inputText, handleNext, handleInputText } = this.props;
+    const { classes, imageData, imageOrder, currIndex, inputText, handleNext, handleInputText } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
@@ -52,7 +53,7 @@ class Recall extends Component<Props> {
       <div className="Recall">
         <div className="title">Recall</div>
         <div className="section">
-          <img src={currCeleb.image} alt="Celebrity" />
+          <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
           <br />
           <TextField placeholder="Name" value={inputText} onChange={handleInputText} />
         </div>

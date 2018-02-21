@@ -9,6 +9,7 @@ import { next } from './actions';
 import './styles.css';
 
 type Props = {
+  classes: any,
   imageData: any,
 
   imageOrder: any,
@@ -34,7 +35,7 @@ class Memorize extends Component<Props> {
   }
 
   render() {
-    const { imageData, imageOrder, currIndex, handleNext } = this.props;
+    const { classes, imageData, imageOrder, currIndex, handleNext } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
@@ -45,7 +46,7 @@ class Memorize extends Component<Props> {
       <div className="Memorize">
         <div className="title">Memorize</div>
         <div className="section">
-          <img src={currCeleb.image} alt="Celebrity" />
+          <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
           <div className="subtitle">{currCeleb.name}</div>
         </div>
         <div className="section">

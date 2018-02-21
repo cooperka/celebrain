@@ -9,6 +9,7 @@ import { restart } from '../actions';
 import './styles.css';
 
 type Props = {
+  classes: any,
   imageData: any,
 
   imageOrder: any,
@@ -35,7 +36,7 @@ class Results extends Component<Props> {
   }
 
   renderGuess(guess = '', index) {
-    const { imageData, imageOrder } = this.props;
+    const { classes, imageData, imageOrder } = this.props;
     const celeb = imageData[imageOrder[index]];
     const actualName = celeb.name || '';
     const isMatch = guess.toLowerCase() === actualName.toLowerCase();
@@ -44,7 +45,7 @@ class Results extends Component<Props> {
     return (
       <Fragment key={index}>
         <div className="grid-item">
-          <img src={celeb.image} alt="Celebrity" />
+          <img className={classes.shadowed} src={celeb.image} alt="Celebrity" />
         </div>
         <div className="grid-item">
           <div className={`guess-text ${guessColor}`}>{isMatch ? '✓' : '❌'} {guess}</div>
