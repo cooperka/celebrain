@@ -48,7 +48,9 @@ class Memorize extends Component<Props> {
         <div className="section">
           <CelebImage celeb={currCeleb} />
           <div className="subtitle">
-            <a href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>{currCeleb.name}</a>
+            <a className="name" href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>
+              {currCeleb.name}
+            </a>
           </div>
         </div>
         <div className="section">

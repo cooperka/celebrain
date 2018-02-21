@@ -1,3 +1,7 @@
 .Memorize img {
   height: 30em;
 }
+
+.Memorize .name {
+  text-decoration: none;
+}

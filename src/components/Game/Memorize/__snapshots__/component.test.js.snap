@@ -25,6 +25,7 @@ exports[`renders 1`] = `
       className="subtitle"
     >
       <a
+        className="name"
         href="https://en.wikipedia.org/?curid=3489865"
       >
         Nehemiah Persoff
