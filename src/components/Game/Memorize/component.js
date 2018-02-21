@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'material-ui';
 
 import { next } from './actions';
 
@@ -48,7 +49,7 @@ class Memorize extends Component<Props> {
           <div className="subtitle">{currCeleb.name}</div>
         </div>
         <div className="section">
-          <button onClick={handleNext}>Next {`${currIndex + 1} / ${numItems}`}</button>
+          <Button onClick={handleNext}>Next {`(${currIndex + 1}/${numItems})`}</Button>
         </div>
       </div>
     );

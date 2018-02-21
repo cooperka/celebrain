@@ -26,10 +26,31 @@ exports[`renders 1`] = `
     className="section"
   >
     <button
+      className="MuiButtonBase-root-16 MuiButton-root-1"
+      disabled={false}
+      onBlur={[Function]}
       onClick={undefined}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
     >
-      Next 
-      1 / 1
+      <span
+        className="MuiButton-label-2"
+      >
+        Next 
+        (1/1)
+      </span>
+      <span
+        className="MuiTouchRipple-root-18"
+      />
     </button>
   </div>
 </div>

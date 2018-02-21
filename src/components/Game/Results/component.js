@@ -2,6 +2,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'material-ui';
 
 import { restart } from '../actions';
 
@@ -62,7 +63,7 @@ class Results extends Component<Props> {
         <div className="grid-container">
           {inputs.map((guess, index) => this.renderGuess(guess, index))}
         </div>
-        <button onClick={handleRestart}>Try again</button>
+        <Button onClick={handleRestart}>Try again</Button>
       </div>
     );
   }

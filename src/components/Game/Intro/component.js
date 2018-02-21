@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'material-ui';
 
 import { setGameState } from '../actions';
 import { gameState } from '../reducers';
@@ -28,7 +29,7 @@ class Intro extends Component<Props> {
     return (
       <div className="Intro">
         <div className="title">New game</div>
-        <button onClick={handleStartGame}>Start</button>
+        <Button onClick={handleStartGame}>Start</Button>
       </div>
     );
   }

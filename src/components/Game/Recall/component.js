@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField } from 'material-ui';
+import { TextField, Button } from 'material-ui';
 
 import { next, changedInputText } from './actions';
 
@@ -57,7 +57,7 @@ class Recall extends Component<Props> {
           <TextField placeholder="Name" value={inputText} onChange={handleInputText} />
         </div>
         <div className="section">
-          <button onClick={handleNext}>Next {`${currIndex + 1} / ${numItems}`}</button>
+          <Button onClick={handleNext}>Next {`(${currIndex + 1}/${numItems})`}</Button>
         </div>
       </div>
     );
