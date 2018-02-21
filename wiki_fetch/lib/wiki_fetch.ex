@@ -11,6 +11,56 @@ defmodule WikiFetch do
   @page_size 500 # Fetch this many at a time from Wikipedia (max is 500).
   @members_cap 100 # Halt once we get this many (in case there are thousands of members).
   @thumbsize 800 # Max dimension size (either width or height) for images.
+  @timeframe "2018010100/2018020100" # Start/end dates for pageview counts. 1st of a month to 1st of the next month.
+
+  @doc """
+  Add pageview data to the existing data.json file.
+  """
+  @spec add_wiki_pageviews() :: :ok
+  def add_wiki_pageviews do
+    pageviews = File.read!("data.json")
+    |> Poison.decode!
+    |> Enum.map(fn member -> member["name"] end)
+    |> get_all_pageviews()
+
+    IO.inspect pageviews
+
+    :ok
+  end
+
+  @spec get_all_pageviews([]) :: %{}
+  def get_all_pageviews(titles) do
+    titles
+    |> Enum.reduce(%{}, fn (title, reduction) -> Map.put(reduction, title, get_pageviews(title)) end)
+
+    receive_pageviews()
+  end
+
+  @spec get_pageviews(String.t) :: %{}
+  def get_pageviews(title) do
+    title = String.replace(title, " ", "_")
+    response = fetch_async! "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/#{title}/monthly/#{@timeframe}"
+  end
+
+  def receive_pageviews() do
+    {status, chunk} = receive do
+      %HTTPoison.AsyncStatus{} -> {:ignore, nil}
+      %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
+      %HTTPoison.AsyncChunk{chunk: chunk} -> {:ok, chunk}
+      %HTTPoison.AsyncEnd{} -> {:ignore, nil}
+      after 5_000 -> {:complete, nil}
+    end
+
+    if status == :ok do
+      response = Poison.decode! chunk
+      item = List.first(response["items"])
+      IO.puts "#{item["article"]}: #{item["views"]}"
+    end
+
+    unless status == :complete do
+      receive_pageviews()
+    end
+  end
 
   @spec get_wiki_data() :: :ok
   def get_wiki_data do

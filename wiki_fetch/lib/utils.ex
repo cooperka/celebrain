@@ -33,21 +33,34 @@ defmodule WikiFetch.Utils do
       iex> response["login"]
       "cooperka"
   """
-  def fetch! url do
-    {:ok, response} = fetch url
+  def fetch!(url) do
+    {:ok, response} = fetch(url, false)
     response
   end
 
-  def fetch url do
+  def fetch_async!(url) do
+    {:ok, response} = fetch(url, true)
+    response
+  end
+
+  def fetch(url, async?) do
     IO.puts "GET #{url}"
 
-    case HTTPoison.get(url) do
+    stream_to = if async? do
+      self()
+    else
+      nil
+    end
+
+    case HTTPoison.get(url, %{}, stream_to: stream_to) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, decode body}
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         {:error, "Error: 404"}
       {:error, %HTTPoison.Error{reason: reason}} ->
         {:error, reason}
+      {:ok, _} ->
+        {:ok, "async"}
     end
   end
 
