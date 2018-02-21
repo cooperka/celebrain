@@ -8,10 +8,10 @@ exports[`renders in state INTRO 1`] = `
     imageData={
       Array [
         Object {
-          "filename": "Sean_Astin_by_Gage_Skidmore.jpg",
-          "id": 113063,
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg",
-          "name": "Sean Astin",
+          "filename": "Nehemiah_Persoff_1960.JPG",
+          "id": 3489865,
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG",
+          "name": "Nehemiah Persoff",
         },
       ]
     }
@@ -27,10 +27,10 @@ exports[`renders in state MEMORIZE 1`] = `
     imageData={
       Array [
         Object {
-          "filename": "Sean_Astin_by_Gage_Skidmore.jpg",
-          "id": 113063,
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg",
-          "name": "Sean Astin",
+          "filename": "Nehemiah_Persoff_1960.JPG",
+          "id": 3489865,
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG",
+          "name": "Nehemiah Persoff",
         },
       ]
     }
@@ -46,10 +46,10 @@ exports[`renders in state RECALL 1`] = `
     imageData={
       Array [
         Object {
-          "filename": "Sean_Astin_by_Gage_Skidmore.jpg",
-          "id": 113063,
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg",
-          "name": "Sean Astin",
+          "filename": "Nehemiah_Persoff_1960.JPG",
+          "id": 3489865,
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG",
+          "name": "Nehemiah Persoff",
         },
       ]
     }
@@ -65,10 +65,10 @@ exports[`renders in state RESULTS 1`] = `
     imageData={
       Array [
         Object {
-          "filename": "Sean_Astin_by_Gage_Skidmore.jpg",
-          "id": 113063,
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg",
-          "name": "Sean Astin",
+          "filename": "Nehemiah_Persoff_1960.JPG",
+          "id": 3489865,
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG",
+          "name": "Nehemiah Persoff",
         },
       ]
     }
