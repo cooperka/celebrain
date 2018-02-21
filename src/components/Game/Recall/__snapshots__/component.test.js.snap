@@ -14,19 +14,19 @@ exports[`renders 1`] = `
   >
     <img
       alt="Celebrity"
-      className={undefined}
+      className="CelebImage-shadowed-1"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg"
     />
     <br />
     <div
       aria-describedby={undefined}
-      className="MuiFormControl-root-1"
+      className="MuiFormControl-root-2"
       onBlur={[Function]}
       onFocus={[Function]}
       onKeyPress={undefined}
     >
       <div
-        className="MuiInput-root-5 MuiInput-formControl-6 MuiInput-inkbar-7 MuiInput-underline-11"
+        className="MuiInput-root-6 MuiInput-formControl-7 MuiInput-inkbar-8 MuiInput-underline-12"
         onBlur={[Function]}
         onFocus={[Function]}
       >
@@ -35,7 +35,7 @@ exports[`renders 1`] = `
           aria-required={false}
           autoComplete={undefined}
           autoFocus={true}
-          className="MuiInput-input-14"
+          className="MuiInput-input-15"
           defaultValue={undefined}
           disabled={false}
           id={undefined}
@@ -57,7 +57,7 @@ exports[`renders 1`] = `
     className="section"
   >
     <button
-      className="MuiButtonBase-root-35 MuiButton-root-20"
+      className="MuiButtonBase-root-36 MuiButton-root-21"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -74,13 +74,13 @@ exports[`renders 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-21"
+        className="MuiButton-label-22"
       >
         Next 
         (1/1)
       </span>
       <span
-        className="MuiTouchRipple-root-37"
+        className="MuiTouchRipple-root-38"
       />
     </button>
   </div>

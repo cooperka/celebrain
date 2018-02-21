@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TextField, Button } from 'material-ui';
 
+import CelebImage from '../../CelebImage';
 import { next, changedInputText } from './actions';
 
 import './styles.css';
 
 type Props = {
-  classes: any,
   imageData: any,
 
   imageOrder: any,
@@ -49,7 +49,7 @@ class Recall extends Component<Props> {
 
   render() {
     const {
-      classes, imageData, imageOrder, currIndex, inputText,
+      imageData, imageOrder, currIndex, inputText,
       handleNext, handleInputText, handleKeyPress,
     } = this.props;
     const numItems = imageOrder.length;
@@ -62,7 +62,7 @@ class Recall extends Component<Props> {
       <div className="Recall">
         <div className="title">Recall</div>
         <div className="section">
-          <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
+          <CelebImage celeb={currCeleb} />
           <br />
           <TextField
             placeholder="Name"

@@ -4,12 +4,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'material-ui';
 
+import CelebImage from '../../CelebImage';
 import { restart } from '../actions';
 
 import './styles.css';
 
 type Props = {
-  classes: any,
   imageData: any,
 
   imageOrder: any,
@@ -36,7 +36,7 @@ class Results extends Component<Props> {
   }
 
   renderGuess(guess = '', index) {
-    const { classes, imageData, imageOrder } = this.props;
+    const { imageData, imageOrder } = this.props;
     const celeb = imageData[imageOrder[index]];
     const actualName = celeb.name || '';
     const isMatch = guess.toLowerCase() === actualName.toLowerCase();
@@ -45,7 +45,7 @@ class Results extends Component<Props> {
     return (
       <Fragment key={index}>
         <div className="grid-item">
-          <img className={classes.shadowed} src={celeb.image} alt="Celebrity" />
+          <CelebImage celeb={celeb} />
         </div>
         <div className="grid-item">
           <div className={`guess-text ${guessColor}`}>{isMatch ? '✓' : '❌'} {guess}</div>

@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'material-ui';
 
+import CelebImage from '../../CelebImage';
 import { next } from './actions';
 
 import './styles.css';
 
 type Props = {
-  classes: any,
   imageData: any,
 
   imageOrder: any,
@@ -35,7 +35,7 @@ class Memorize extends Component<Props> {
   }
 
   render() {
-    const { classes, imageData, imageOrder, currIndex, handleNext } = this.props;
+    const { imageData, imageOrder, currIndex, handleNext } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
@@ -46,7 +46,7 @@ class Memorize extends Component<Props> {
       <div className="Memorize">
         <div className="title">Memorize</div>
         <div className="section">
-          <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
+          <CelebImage celeb={currCeleb} />
           <div className="subtitle">
             <a href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>{currCeleb.name}</a>
           </div>

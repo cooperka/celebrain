@@ -14,7 +14,7 @@ exports[`renders 1`] = `
   >
     <img
       alt="Celebrity"
-      className={undefined}
+      className="CelebImage-shadowed-1"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg"
     />
     <div
@@ -31,7 +31,7 @@ exports[`renders 1`] = `
     className="section"
   >
     <button
-      className="MuiButtonBase-root-16 MuiButton-root-1"
+      className="MuiButtonBase-root-17 MuiButton-root-2"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -48,13 +48,13 @@ exports[`renders 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-2"
+        className="MuiButton-label-3"
       >
         Next 
         (1/1)
       </span>
       <span
-        className="MuiTouchRipple-root-18"
+        className="MuiTouchRipple-root-19"
       />
     </button>
   </div>

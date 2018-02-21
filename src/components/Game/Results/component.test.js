@@ -7,7 +7,7 @@ import Results from './component';
 
 it('renders', () => {
   const tree = renderer.create(
-    <Results classes={{}} inputs={[]} />,
+    <Results inputs={[]} />,
   );
   expect(tree.toJSON()).toMatchSnapshot();
 });
