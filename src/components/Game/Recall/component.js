@@ -55,7 +55,7 @@ class Recall extends Component<Props> {
         <div className="section">
           <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
           <br />
-          <TextField placeholder="Name" value={inputText} onChange={handleInputText} />
+          <TextField placeholder="Name" value={inputText} onChange={handleInputText} autoFocus />
         </div>
         <div className="section">
           <Button onClick={handleNext}>Next {`(${currIndex + 1}/${numItems})`}</Button>
