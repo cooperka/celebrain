@@ -1,24 +1,29 @@
+.Results {
+  display: flex;
+  flex-direction: column;
+}
+
 .Results img {
   height: 10em;
 }
 
 .Results .grid-container {
   display: grid;
-  grid-template-columns: auto auto;
-  margin: 0 auto 1rem auto;
+  grid-template-columns: min-content min-content;
+  grid-gap: 1rem;
+  margin: 0 auto 2rem auto;
   align-items: center;
-  max-width: 50rem;
+  max-width: 40rem;
 }
 
 .Results .grid-item {
-  margin-bottom: 1rem;
 }
 
 .Results .guess-text {
-  margin-left: 1rem;
   font-size: 1.6rem;
   font-weight: normal;
   text-align: left;
+  white-space: nowrap;
 }
 
 .Results .guess-text.correct {
@@ -29,4 +34,8 @@
 .Results .guess-text.incorrect {
   /* Material Red 700. */
   color: #D32F2F;
+}
+
+.Results button {
+  margin: auto;
 }
