@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 import Recall from './component';
 
-import imageData from '../../../../public/celebs.json';
+import imageData from '../../../celebs.json';
 
 it('renders', () => {
   const tree = renderer.create(

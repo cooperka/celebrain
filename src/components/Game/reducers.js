@@ -2,7 +2,7 @@ import Immutable from 'immutable';
 
 import { actionTypes } from './actions';
 
-import imageData from '../../../public/celebs.json';
+import imageData from '../../celebs.json';
 
 const numCelebs = imageData.length;
 

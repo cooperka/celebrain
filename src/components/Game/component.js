@@ -9,7 +9,7 @@ import Recall from './Recall';
 import Results from './Results';
 import { gameState } from './reducers';
 
-import imageData from '../../../public/celebs.json';
+import imageData from '../../celebs.json';
 import './styles.css';
 
 type Props = {

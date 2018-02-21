@@ -3,7 +3,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import imageData from '../../../public/celebs.json';
+import imageData from '../../celebs.json';
 
 import CelebImage from './component';
 
