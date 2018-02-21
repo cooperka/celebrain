@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { restart } from '../actions';
@@ -35,11 +35,19 @@ class Results extends Component<Props> {
 
   renderGuess(guess = '', index) {
     const { imageData, imageOrder } = this.props;
-    const actualName = imageData[imageOrder[index]].name || '';
+    const celeb = imageData[imageOrder[index]];
+    const actualName = celeb.name || '';
     const isMatch = guess.toLowerCase() === actualName.toLowerCase();
 
     return (
-      <div className="guess" key={index}>{isMatch ? '✓' : '❌'} {guess}</div>
+      <Fragment key={index}>
+        <div className="grid-item">
+          <img src={celeb.image} alt="Celebrity" />
+        </div>
+        <div className="grid-item">
+          <div className="guess-text">{isMatch ? '✓' : '❌'} {guess}</div>
+        </div>
+      </Fragment>
     );
   }
 
@@ -49,7 +57,9 @@ class Results extends Component<Props> {
     return (
       <div className="Results">
         <div className="title">Results</div>
-        {inputs.map((guess, index) => this.renderGuess(guess, index))}
+        <div className="grid-container">
+          {inputs.map((guess, index) => this.renderGuess(guess, index))}
+        </div>
         <button onClick={handleRestart}>Try again</button>
       </div>
     );

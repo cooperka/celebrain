@@ -9,6 +9,9 @@ exports[`renders 1`] = `
   >
     Results
   </div>
+  <div
+    className="grid-container"
+  />
   <button
     onClick={undefined}
   >
