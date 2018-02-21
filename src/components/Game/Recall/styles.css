@@ -2,6 +2,11 @@
   height: 30em;
 }
 
-.Recall .subtitle {
-  margin-bottom: 0;
+.Recall .input {
+  /* Base 62.5% * 1.6 = 100% for MUI. */
+  font-size: 160%;
+}
+
+.Recall .input div {
+  font-size: inherit;
 }

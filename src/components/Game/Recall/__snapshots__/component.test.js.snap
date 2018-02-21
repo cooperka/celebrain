@@ -17,12 +17,39 @@ exports[`renders 1`] = `
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg"
     />
     <br />
-    <input
-      className="subtitle"
-      onChange={undefined}
-      placeholder="Name"
-      value={undefined}
-    />
+    <div
+      aria-describedby={undefined}
+      className="MuiFormControl-root-1 input"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <div
+        className="MuiInput-root-5 MuiInput-formControl-6 MuiInput-inkbar-7 MuiInput-underline-11"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          aria-required={false}
+          autoComplete={undefined}
+          autoFocus={undefined}
+          className="MuiInput-input-14"
+          defaultValue={undefined}
+          disabled={false}
+          id={undefined}
+          name={undefined}
+          onChange={[Function]}
+          onKeyDown={undefined}
+          onKeyUp={undefined}
+          placeholder="Name"
+          readOnly={undefined}
+          required={undefined}
+          rows={undefined}
+          type="text"
+          value={undefined}
+        />
+      </div>
+    </div>
   </div>
   <div
     className="section"
