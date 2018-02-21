@@ -1,12 +1,10 @@
-import { times } from 'ramda';
-import uniqueRandFactory from 'unique-random';
+import Immutable from 'immutable';
 
 import { actionTypes } from './actions';
 
 import imageData from '../../../public/celebs.json';
 
 const numCelebs = imageData.length;
-const getUniqueRand = uniqueRandFactory(0, numCelebs - 1);
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
@@ -19,34 +17,47 @@ export const gameState = {
 
 const initialState = {
   currState: gameState.INTRO,
-  imageOrder: getRandomOrder(),
+  imageOrder: undefined,
 };
+
+export function gameReducer(state = initialState, { type, payload } = {}) {
+  switch (type) {
+    case actionTypes.TOGGLE_GAME_STATE: {
+      const isNewGame = payload.state === gameState.MEMORIZE;
+
+      return {
+        ...state,
+        currState: payload.state,
+        imageOrder: isNewGame ? getRandomOrder() : state.imageOrder,
+      };
+    }
+
+    case actionTypes.RESTART:
+      return initialState;
+
+    default:
+      return state;
+  }
+}
 
 /**
  * @returns {array} An array of X unique random numbers,
  * each based on the total number of possible celebs.
  */
 function getRandomOrder(numQuestions = 5) {
-  const order = times(() => getUniqueRand(), numQuestions);
+  let set = Immutable.Set();
+  while (set.size < numQuestions) {
+    set = set.add(getRandomInt(numCelebs));
+  }
+
+  const order = set.toArray();
   if (IS_DEV) console.debug('Order:', order);
   return order;
 }
 
-export function gameReducer(state = initialState, { type, payload } = {}) {
-  switch (type) {
-    case actionTypes.TOGGLE_GAME_STATE:
-      return {
-        ...state,
-        currState: payload.state,
-      };
-
-    case actionTypes.RESTART:
-      return {
-        ...initialState,
-        imageOrder: getRandomOrder(),
-      };
-
-    default:
-      return state;
-  }
+/**
+ * @returns {number} A random integer between 0 and (max - 1).
+ */
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
