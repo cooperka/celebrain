@@ -54,7 +54,7 @@ class Recall extends Component<Props> {
         <div className="section">
           <img src={currCeleb.image} alt="Celebrity" />
           <br />
-          <TextField className="input" placeholder="Name" value={inputText} onChange={handleInputText} />
+          <TextField placeholder="Name" value={inputText} onChange={handleInputText} />
         </div>
         <div className="section">
           <button onClick={handleNext}>Next {`${currIndex + 1} / ${numItems}`}</button>

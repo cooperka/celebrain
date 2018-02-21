@@ -1,5 +1,5 @@
 .NavBar {
-  /* Default is 64. Specified here to be explicit. */
+  /* Default is 64. Specified here to be explicit and match root padding. */
   height: 64px;
 }
 
