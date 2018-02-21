@@ -12,15 +12,11 @@ exports[`renders 1`] = `
   <div
     className="section"
   >
-    <a
-      href="https://commons.wikimedia.org/wiki/File:Nehemiah_Persoff_1960.JPG"
-    >
-      <img
-        alt="Celebrity"
-        className="CelebImage-shadowed-1"
-        src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG"
-      />
-    </a>
+    <img
+      alt="Celebrity"
+      className="CelebImage-shadowed-1"
+      src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG"
+    />
     <br />
     <div
       aria-describedby={undefined}

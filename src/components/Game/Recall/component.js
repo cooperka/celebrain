@@ -62,7 +62,7 @@ class Recall extends Component<Props> {
       <div className="Recall">
         <div className="title">Recall</div>
         <div className="section">
-          <CelebImage celeb={currCeleb} />
+          <CelebImage celeb={currCeleb} noLink />
           <br />
           <TextField
             placeholder="Name"
