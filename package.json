@@ -14,14 +14,14 @@
   },
   "dependencies": {
     "immutable": "3.8.2",
-    "material-ui": "1.0.0-beta.32",
+    "material-ui": "1.0.0-beta.34",
     "nuka-carousel": "3.0.1",
     "ramda": "0.25.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-redux": "5.0.6",
+    "react-redux": "5.0.7",
     "react-router-dom": "4.2.2",
-    "react-static": "5.1.8",
+    "react-static": "5.1.14",
     "redux": "3.7.2",
     "redux-devtools": "3.4.1",
     "redux-devtools-dock-monitor": "1.1.3",
@@ -31,16 +31,16 @@
     "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.1",
-    "eslint": "4.16.0",
+    "babel-eslint": "8.2.2",
+    "eslint": "4.18.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-cooperka": "0.2.9",
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.6.1",
-    "flow-bin": "0.64.0",
-    "react-scripts": "1.1.0",
+    "eslint-plugin-react": "7.7.0",
+    "flow-bin": "0.66.0",
+    "react-scripts": "1.1.1",
     "react-test-renderer": "16.2.0",
-    "serve": "6.4.9"
+    "serve": "6.4.11"
   }
 }
