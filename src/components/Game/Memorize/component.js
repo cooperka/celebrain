@@ -47,7 +47,9 @@ class Memorize extends Component<Props> {
         <div className="title">Memorize</div>
         <div className="section">
           <img className={classes.shadowed} src={currCeleb.image} alt="Celebrity" />
-          <div className="subtitle">{currCeleb.name}</div>
+          <div className="subtitle">
+            <a href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>{currCeleb.name}</a>
+          </div>
         </div>
         <div className="section">
           <Button onClick={handleNext}>Next {`(${currIndex + 1}/${numItems})`}</Button>
