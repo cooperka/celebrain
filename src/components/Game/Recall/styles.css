@@ -1,3 +1,7 @@
 .Recall img {
   height: 30em;
 }
+
+.Recall input {
+  margin-top: 1rem;
+}

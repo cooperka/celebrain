@@ -10,7 +10,7 @@ exports[`renders 1`] = `
     New game
   </div>
   <button
-    className="MuiButtonBase-root-16 MuiButton-root-1"
+    className="MuiButtonBase-root-16 MuiButton-root-1 start"
     disabled={false}
     onBlur={[Function]}
     onClick={undefined}

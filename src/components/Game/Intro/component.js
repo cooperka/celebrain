@@ -29,7 +29,7 @@ class Intro extends Component<Props> {
     return (
       <div className="Intro">
         <div className="title">New game</div>
-        <Button onClick={handleStartGame}>Start</Button>
+        <Button className="start" onClick={handleStartGame}>Start</Button>
       </div>
     );
   }
