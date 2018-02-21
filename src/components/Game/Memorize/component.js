@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
+
+import celebUtils from '../../../utils/celeb-utils';
 import { next } from './actions';
 
 import './styles.css';
@@ -14,6 +16,8 @@ type Props = {
 
   imageOrder: any,
   currIndex: number,
+  onlyFirstNames: boolean,
+
   handleNext: () => void,
 };
 
@@ -23,6 +27,7 @@ class Memorize extends Component<Props> {
     return {
       imageOrder: state.game.imageOrder,
       currIndex: state.memorize.currIndex,
+      onlyFirstNames: state.settings.onlyFirstNames,
     };
   }
 
@@ -35,7 +40,7 @@ class Memorize extends Component<Props> {
   }
 
   render() {
-    const { imageData, imageOrder, currIndex, handleNext } = this.props;
+    const { imageData, imageOrder, currIndex, onlyFirstNames, handleNext } = this.props;
     const numItems = imageOrder.length;
 
     if (currIndex >= numItems) return null;
@@ -49,7 +54,7 @@ class Memorize extends Component<Props> {
           <CelebImage celeb={currCeleb} />
           <div className="subtitle">
             <a className="name" href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>
-              {currCeleb.name}
+              {celebUtils.getName(currCeleb, onlyFirstNames)}
             </a>
           </div>
         </div>

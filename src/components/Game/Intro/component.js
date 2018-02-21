@@ -57,7 +57,7 @@ class Intro extends Component<Props> {
                   onChange={handleSetOnlyFirstNames}
                 />
               }
-              label="Only show first names"
+              label="Only learn first names"
             />
           </FormGroup>
           <Button className="start" onClick={handleStartGame}>Start</Button>

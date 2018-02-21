@@ -72,7 +72,7 @@ exports[`renders 1`] = `
         <span
           className="MuiTypography-root-43 MuiTypography-body1-52 MuiFormControlLabel-label-13"
         >
-          Only show first names
+          Only learn first names
         </span>
       </label>
     </div>

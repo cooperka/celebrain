@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
+
+import celebUtils from '../../../utils/celeb-utils';
 import { restart } from '../actions';
 
 import './styles.css';
@@ -14,6 +16,7 @@ type Props = {
 
   imageOrder: any,
   inputs: any,
+  onlyFirstNames: boolean,
 
   handleRestart: () => void,
 };
@@ -24,6 +27,7 @@ class Results extends Component<Props> {
     return {
       imageOrder: state.game.imageOrder,
       inputs: state.recall.inputs,
+      onlyFirstNames: state.settings.onlyFirstNames,
     };
   }
 
@@ -36,10 +40,10 @@ class Results extends Component<Props> {
   }
 
   renderGuess(guess = '', index) {
-    const { imageData, imageOrder } = this.props;
+    const { imageData, imageOrder, onlyFirstNames } = this.props;
     const celeb = imageData[imageOrder[index]];
-    const actualName = celeb.name || '';
-    const isMatch = guess.toLowerCase() === actualName.toLowerCase();
+    const actualName = celebUtils.getName(celeb, onlyFirstNames);
+    const isMatch = guess.trim().toLowerCase() === actualName.trim().toLowerCase();
     const guessColor = isMatch ? 'correct' : 'incorrect';
 
     return (
