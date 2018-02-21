@@ -8,6 +8,8 @@ import imageData from '../../../public/celebs.json';
 const numCelebs = imageData.length;
 const getUniqueRand = uniqueRandFactory(0, numCelebs - 1);
 
+const IS_DEV = process.env.NODE_ENV === 'development';
+
 export const gameState = {
   INTRO: 'INTRO',
   MEMORIZE: 'MEMORIZE',
@@ -26,7 +28,7 @@ const initialState = {
  */
 function getRandomOrder(numQuestions = 5) {
   const order = times(() => getUniqueRand(), numQuestions);
-  console.debug('Order:', order);
+  if (IS_DEV) console.debug('Order:', order);
   return order;
 }
 

@@ -14,12 +14,12 @@ exports[`renders 1`] = `
   >
     <img
       alt="Celebrity"
-      src="/celebs/aaliyah.jpg"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sean_Astin_by_Gage_Skidmore.jpg/545px-Sean_Astin_by_Gage_Skidmore.jpg"
     />
     <div
       className="subtitle"
     >
-      Aaliyah
+      Sean Astin
     </div>
   </div>
   <div
