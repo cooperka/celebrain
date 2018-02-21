@@ -15,12 +15,12 @@ export const gameState = {
   RESULTS: 'RESULTS',
 };
 
-const initialState = {
+const initialGameState = {
   currState: gameState.INTRO,
   imageOrder: undefined,
 };
 
-export function gameReducer(state = initialState, { type, payload } = {}) {
+export function gameReducer(state = initialGameState, { type, payload } = {}) {
   switch (type) {
     case actionTypes.TOGGLE_GAME_STATE: {
       const isNewGame = payload.state === gameState.MEMORIZE;
@@ -33,7 +33,24 @@ export function gameReducer(state = initialState, { type, payload } = {}) {
     }
 
     case actionTypes.RESTART:
-      return initialState;
+      return initialGameState;
+
+    default:
+      return state;
+  }
+}
+
+const initialSettingsState = {
+  onlyFirstNames: false,
+};
+
+export function settingsReducer(state = initialSettingsState, { type, payload } = {}) {
+  switch (type) {
+    case actionTypes.SET_ONLY_FIRST_NAMES:
+      return {
+        ...state,
+        onlyFirstNames: payload.isChecked,
+      };
 
     default:
       return state;

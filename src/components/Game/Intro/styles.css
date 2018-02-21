@@ -1,3 +1,7 @@
-.Intro .start {
+.Intro fieldset {
   margin-top: 1rem;
+}
+
+.Intro .start {
+  margin: 1rem auto;
 }
