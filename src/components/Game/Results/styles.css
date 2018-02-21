@@ -9,17 +9,18 @@
 
 .Results .grid-container {
   display: grid;
-  grid-template-columns: min-content min-content;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   margin: 0 auto 2rem auto;
   align-items: center;
-  max-width: 40rem;
+  max-width: 55rem;
 }
 
 .Results .grid-item {
 }
 
 .Results .guess-text {
+  margin-left: 1rem;
   font-size: 1.6rem;
   font-weight: normal;
   text-align: left;
