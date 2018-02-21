@@ -38,6 +38,7 @@ class Results extends Component<Props> {
     const celeb = imageData[imageOrder[index]];
     const actualName = celeb.name || '';
     const isMatch = guess.toLowerCase() === actualName.toLowerCase();
+    const guessColor = isMatch ? 'correct' : 'incorrect';
 
     return (
       <Fragment key={index}>
@@ -45,7 +46,8 @@ class Results extends Component<Props> {
           <img src={celeb.image} alt="Celebrity" />
         </div>
         <div className="grid-item">
-          <div className="guess-text">{isMatch ? '✓' : '❌'} {guess}</div>
+          <div className={`guess-text ${guessColor}`}>{isMatch ? '✓' : '❌'} {guess}</div>
+          {isMatch ? null : <div className="guess-text">{actualName}</div>}
         </div>
       </Fragment>
     );

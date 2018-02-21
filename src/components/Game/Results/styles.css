@@ -20,3 +20,13 @@
   font-weight: normal;
   text-align: left;
 }
+
+.Results .guess-text.correct {
+  /* Material Green 700. */
+  color: #388E3C;
+}
+
+.Results .guess-text.incorrect {
+  /* Material Red 700. */
+  color: #D32F2F;
+}
