@@ -78,8 +78,7 @@ defmodule WikiFetch do
     new_images = response["query"]["pages"]
     |> Enum.reduce(%{}, fn({key, page}, reduction) -> Map.put(reduction, String.to_integer(key), %{
       image: page["thumbnail"]["source"],
-      width: page["thumbnail"]["width"],
-      height: page["thumbnail"]["height"],
+      filename: page["pageimage"],
     }) end)
 
     images = images
