@@ -1,5 +1,10 @@
 defmodule WikiFetch.Utils do
 
+  @spec write_data(%{} | []) :: :ok
+  def write_data(data) do
+    File.write!("data.json", Poison.encode!(data, pretty: true), [:binary])
+  end
+
   @doc """
   ## Examples
 
@@ -11,6 +16,17 @@ defmodule WikiFetch.Utils do
     members_by_id
     |> Map.keys()
     |> Enum.reduce(fn id, reduction -> "#{reduction}|#{id}" end)
+  end
+
+  @doc """
+  ## Examples
+
+      iex> WikiFetch.Utils.snake_case "Mindy Kaling"
+      "Mindy_Kaling"
+  """
+  @spec snake_case(String.t) :: String.t
+  def snake_case(string) do
+    String.replace(string, " ", "_")
   end
 
   def fetch_wiki! params do

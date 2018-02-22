@@ -21,31 +21,31 @@ defmodule WikiFetch do
   def add_wiki_pageviews do
     File.read!("data.json")
     |> Poison.decode!
-    |> Enum.map(fn member -> member["title"] end)
     |> get_all_pageviews()
 
-    pageviews = receive do
+    data_by_title = receive do
       :complete -> MapAgent.get_all()
     end
 
-    IO.inspect pageviews
-
-    :ok
+    data_by_title
+    |> Map.values()
+    |> write_data()
   end
 
   @spec get_all_pageviews([]) :: :ok
-  defp get_all_pageviews(titles) do
-    titles
-    |> Enum.reduce(%{}, fn (title, reduction) -> Map.put(reduction, title, get_pageviews(title)) end)
+  defp get_all_pageviews(data) do
+    data
+    |> Enum.each(fn (member) -> get_pageviews(snake_case(member["title"])) end)
 
-    {:ok, _} = MapAgent.start_link([])
+    data_by_title = data
+    |> Enum.reduce(%{}, fn (member, reduction) -> Map.put(reduction, snake_case(member["title"]), member) end)
+
+    :ok = MapAgent.start_link(data_by_title)
     receive_pageviews()
   end
 
-  @spec get_pageviews(String.t) :: %{}
   defp get_pageviews(title) do
-    title = String.replace(title, " ", "_")
-    response = fetch_async! "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/#{title}/monthly/#{@timeframe}"
+    fetch_async! "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/#{title}/monthly/#{@timeframe}"
   end
 
   defp receive_pageviews() do
@@ -60,7 +60,7 @@ defmodule WikiFetch do
     if status == :chunk do
       response = Poison.decode! chunk
       item = List.first(response["items"])
-      MapAgent.put(item["article"], item["views"])
+      MapAgent.merge_values(item["article"], %{pageviews: item["views"]})
     end
 
     if status == :complete do
@@ -75,7 +75,7 @@ defmodule WikiFetch do
     members_by_id = get_members_by_id()
     images_by_id = get_images_by_id(members_by_id)
 
-    data = images_by_id
+    images_by_id
     # Only keep members with valid images.
     |> Enum.filter(fn({_, data}) -> data[:image] != nil end)
     # Merge all relevant data into one map.
@@ -83,8 +83,7 @@ defmodule WikiFetch do
       Map.merge(data, members_by_id[key])
       |> Map.put(:id, key)
     end)
-
-    File.write!("data.json", Poison.encode!(data, pretty: true), [:binary])
+    |> write_data()
   end
 
   @spec get_members_by_id() :: %{}
