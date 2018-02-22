@@ -1,5 +1,6 @@
 defmodule WikiFetch do
   import WikiFetch.Utils
+  alias WikiFetch.MapAgent
 
   @moduledoc """
   Documentation for WikiFetch.
@@ -18,21 +19,26 @@ defmodule WikiFetch do
   """
   @spec add_wiki_pageviews() :: :ok
   def add_wiki_pageviews do
-    pageviews = File.read!("data.json")
+    File.read!("data.json")
     |> Poison.decode!
     |> Enum.map(fn member -> member["title"] end)
     |> get_all_pageviews()
+
+    pageviews = receive do
+      :complete -> MapAgent.get_all()
+    end
 
     IO.inspect pageviews
 
     :ok
   end
 
-  @spec get_all_pageviews([]) :: %{}
+  @spec get_all_pageviews([]) :: :ok
   def get_all_pageviews(titles) do
     titles
     |> Enum.reduce(%{}, fn (title, reduction) -> Map.put(reduction, title, get_pageviews(title)) end)
 
+    {:ok, _} = MapAgent.start_link([])
     receive_pageviews()
   end
 
@@ -46,18 +52,20 @@ defmodule WikiFetch do
     {status, chunk} = receive do
       %HTTPoison.AsyncStatus{} -> {:ignore, nil}
       %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
-      %HTTPoison.AsyncChunk{chunk: chunk} -> {:ok, chunk}
+      %HTTPoison.AsyncChunk{chunk: chunk} -> {:chunk, chunk}
       %HTTPoison.AsyncEnd{} -> {:ignore, nil}
       after 5_000 -> {:complete, nil}
     end
 
-    if status == :ok do
+    if status == :chunk do
       response = Poison.decode! chunk
       item = List.first(response["items"])
-      IO.puts "#{item["article"]}: #{item["views"]}"
+      MapAgent.put(item["article"], item["views"])
     end
 
-    unless status == :complete do
+    if status == :complete do
+      send(self(), status)
+    else
       receive_pageviews()
     end
   end
