@@ -7,8 +7,8 @@ defmodule WikiFetch.Utils do
       "a|b"
   """
   @spec get_member_id_string(%{}) :: String.t
-  def get_member_id_string members do
-    members
+  def get_member_id_string(members_by_id) do
+    members_by_id
     |> Map.keys()
     |> Enum.reduce(fn id, reduction -> "#{reduction}|#{id}" end)
   end

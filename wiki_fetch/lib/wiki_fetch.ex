@@ -54,7 +54,7 @@ defmodule WikiFetch do
       %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
       %HTTPoison.AsyncChunk{chunk: chunk} -> {:chunk, chunk}
       %HTTPoison.AsyncEnd{} -> {:ignore, nil}
-      after 5_000 -> {:complete, nil}
+      after 3_000 -> {:complete, nil}
     end
 
     if status == :chunk do
@@ -72,23 +72,23 @@ defmodule WikiFetch do
 
   @spec get_wiki_data() :: :ok
   def get_wiki_data do
-    members = get_members()
-    images = get_images(members)
+    members_by_id = get_members_by_id()
+    images_by_id = get_images_by_id(members_by_id)
 
-    data = images
+    data = images_by_id
     # Only keep members with valid images.
     |> Enum.filter(fn({_, data}) -> data[:image] != nil end)
     # Merge all relevant data into one map.
     |> Enum.map(fn({key, data}) ->
-      Map.merge(data, members[key])
+      Map.merge(data, members_by_id[key])
       |> Map.put(:id, key)
     end)
 
     File.write!("data.json", Poison.encode!(data, pretty: true), [:binary])
   end
 
-  @spec get_members() :: %{}
-  defp get_members(members \\ %{}, continue_key \\ nil) do
+  @spec get_members_by_id() :: %{}
+  defp get_members_by_id(members_by_id \\ %{}, continue_key \\ nil) do
     extra_params = case continue_key do
       nil -> ""
       _ -> "&cmcontinue=#{continue_key}"
@@ -105,27 +105,27 @@ defmodule WikiFetch do
       title: member["title"],
     }) end)
 
-    members = members
+    members_by_id = members_by_id
     |> Map.merge(new_members)
 
-    if @members_cap > 0 && map_size(members) >= @members_cap do
-      members
+    if @members_cap > 0 && map_size(members_by_id) >= @members_cap do
+      members_by_id
     else
       # Fetch the next page if there is one.
       case response["continue"]["cmcontinue"] do
-        nil -> members
-        continue_key -> get_members(members, continue_key)
+        nil -> members_by_id
+        continue_key -> get_members_by_id(members_by_id, continue_key)
       end
     end
   end
 
-  @spec get_images(%{}) :: %{}
-  defp get_images(members, images \\ %{}) do
+  @spec get_images_by_id(%{}) :: %{}
+  defp get_images_by_id(members_by_id, images_by_id \\ %{}) do
     # Max of 50 images per request.
-    {first_50, remaining_members} = Enum.split(members, 50)
+    {first_50, remaining_members} = Enum.split(members_by_id, 50)
 
     ids = first_50
-    # Put the tuples from Enum.split back into a map.
+    # Put the tuples from Enum.split back into a Map.
     |> Map.new
     |> get_member_id_string()
 
@@ -138,12 +138,12 @@ defmodule WikiFetch do
       filename: page["pageimage"],
     }) end)
 
-    images = images
+    images_by_id = images_by_id
     |> Map.merge(new_images)
 
     case remaining_members do
-      [] -> images
-      _ -> get_images(remaining_members, images)
+      [] -> images_by_id
+      _ -> get_images_by_id(remaining_members, images_by_id)
     end
   end
 
