@@ -54,7 +54,7 @@ class Memorize extends Component<Props> {
           <CelebImage celeb={currCeleb} />
           <div className="subtitle">
             <a className="name" href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>
-              {celebUtils.getName(currCeleb, onlyFirstNames)}
+              {celebUtils.getDisplayName(currCeleb, onlyFirstNames)}
             </a>
           </div>
         </div>

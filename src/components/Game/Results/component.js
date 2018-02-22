@@ -42,7 +42,7 @@ class Results extends Component<Props> {
   renderGuess(guess = '', index) {
     const { imageData, imageOrder, onlyFirstNames } = this.props;
     const celeb = imageData[imageOrder[index]];
-    const actualName = celebUtils.getName(celeb, onlyFirstNames);
+    const actualName = celebUtils.getDisplayName(celeb, onlyFirstNames);
     const isMatch = guess.trim().toLowerCase() === actualName.trim().toLowerCase();
     const guessColor = isMatch ? 'correct' : 'incorrect';
 

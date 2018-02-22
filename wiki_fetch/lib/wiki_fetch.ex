@@ -20,7 +20,7 @@ defmodule WikiFetch do
   def add_wiki_pageviews do
     pageviews = File.read!("data.json")
     |> Poison.decode!
-    |> Enum.map(fn member -> member["name"] end)
+    |> Enum.map(fn member -> member["title"] end)
     |> get_all_pageviews()
 
     IO.inspect pageviews
@@ -94,8 +94,7 @@ defmodule WikiFetch do
     # Ignore certain types of names like "Abbott and Costello".
     |> Enum.filter(fn(member) -> !(member["title"] =~ ~r/ and /) end)
     |> Enum.reduce(%{}, fn(member, reduction) -> Map.put(reduction, member["pageid"], %{
-      # Remove any trailing annotation (e.g. "(Actor)").
-      name: String.replace(member["title"], ~r/ \(.*/, ""),
+      title: member["title"],
     }) end)
 
     members = members
