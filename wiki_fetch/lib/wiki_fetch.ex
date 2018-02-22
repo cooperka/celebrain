@@ -34,7 +34,7 @@ defmodule WikiFetch do
   end
 
   @spec get_all_pageviews([]) :: :ok
-  def get_all_pageviews(titles) do
+  defp get_all_pageviews(titles) do
     titles
     |> Enum.reduce(%{}, fn (title, reduction) -> Map.put(reduction, title, get_pageviews(title)) end)
 
@@ -43,12 +43,12 @@ defmodule WikiFetch do
   end
 
   @spec get_pageviews(String.t) :: %{}
-  def get_pageviews(title) do
+  defp get_pageviews(title) do
     title = String.replace(title, " ", "_")
     response = fetch_async! "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/#{title}/monthly/#{@timeframe}"
   end
 
-  def receive_pageviews() do
+  defp receive_pageviews() do
     {status, chunk} = receive do
       %HTTPoison.AsyncStatus{} -> {:ignore, nil}
       %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
@@ -88,7 +88,7 @@ defmodule WikiFetch do
   end
 
   @spec get_members() :: %{}
-  def get_members(members \\ %{}, continue_key \\ nil) do
+  defp get_members(members \\ %{}, continue_key \\ nil) do
     extra_params = case continue_key do
       nil -> ""
       _ -> "&cmcontinue=#{continue_key}"
@@ -120,7 +120,7 @@ defmodule WikiFetch do
   end
 
   @spec get_images(%{}) :: %{}
-  def get_images(members, images \\ %{}) do
+  defp get_images(members, images \\ %{}) do
     # Max of 50 images per request.
     {first_50, remaining_members} = Enum.split(members, 50)
 
