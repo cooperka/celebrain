@@ -1,5 +1,7 @@
 defmodule WikiFetch.Utils do
 
+  @fetch_delay_ms 3_000 # Duration of callback silence before concluding that all requests have completed.
+
   @spec write_data(%{} | []) :: :ok
   def write_data(data) do
     File.write!("data.json", Poison.encode!(data, pretty: true), [:binary])
@@ -77,6 +79,26 @@ defmodule WikiFetch.Utils do
         {:error, reason}
       {:ok, _} ->
         {:ok, "async"}
+    end
+  end
+
+  def receive_chunks(callback) do
+    {status, chunk} = receive do
+      %HTTPoison.AsyncStatus{} -> {:ignore, nil}
+      %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
+      %HTTPoison.AsyncChunk{chunk: chunk} -> {:chunk, chunk}
+      %HTTPoison.AsyncEnd{} -> {:ignore, nil}
+      after @fetch_delay_ms -> {:complete, nil}
+    end
+
+    if status == :chunk do
+      callback.(Poison.decode! chunk)
+    end
+
+    if status == :complete do
+      send(self(), status)
+    else
+      receive_chunks(callback)
     end
   end
 

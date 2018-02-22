@@ -41,33 +41,15 @@ defmodule WikiFetch do
     |> Enum.reduce(%{}, fn (member, reduction) -> Map.put(reduction, snake_case(member["title"]), member) end)
 
     :ok = MapAgent.start_link(data_by_title)
-    receive_pageviews()
+
+    receive_chunks(fn (response) ->
+      item = List.first(response["items"])
+      MapAgent.merge_values(item["article"], %{pageviews: item["views"]})
+    end)
   end
 
   defp get_pageviews(title) do
     fetch_async! "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/#{title}/monthly/#{@timeframe}"
-  end
-
-  defp receive_pageviews() do
-    {status, chunk} = receive do
-      %HTTPoison.AsyncStatus{} -> {:ignore, nil}
-      %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
-      %HTTPoison.AsyncChunk{chunk: chunk} -> {:chunk, chunk}
-      %HTTPoison.AsyncEnd{} -> {:ignore, nil}
-      after 3_000 -> {:complete, nil}
-    end
-
-    if status == :chunk do
-      response = Poison.decode! chunk
-      item = List.first(response["items"])
-      MapAgent.merge_values(item["article"], %{pageviews: item["views"]})
-    end
-
-    if status == :complete do
-      send(self(), status)
-    else
-      receive_pageviews()
-    end
   end
 
   @spec get_wiki_data() :: :ok
