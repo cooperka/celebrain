@@ -38,7 +38,9 @@ defmodule WikiFetch do
     |> Enum.each(fn (member) -> get_pageviews(snake_case(member["title"])) end)
 
     data_by_title = data
-    |> Enum.reduce(%{}, fn (member, reduction) -> Map.put(reduction, snake_case(member["title"]), member) end)
+    |> Enum.reduce(%{}, fn (member, reduction) ->
+      Map.put(reduction, snake_case(member["title"]), Map.delete(member, "pageviews"))
+    end)
 
     :ok = MapAgent.start_link(data_by_title)
 
