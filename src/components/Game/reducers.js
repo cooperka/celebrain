@@ -10,14 +10,17 @@ export const gameState = {
   RESULTS: 'RESULTS',
 };
 
+const initialSettings = {
+  numCelebs: 5,
+  onlyFirstNames: false,
+  popularityGroups: Immutable.List([true, false, false, false]),
+};
+
 const initialGameState = {
   currState: gameState.INTRO,
   imageOrder: undefined,
 
-  // --- Settings.
-  numCelebs: 5,
-  onlyFirstNames: false,
-  popularityGroups: Immutable.List([true, false, false, false]),
+  ...initialSettings,
 };
 
 export function gameReducer(state = initialGameState, { type, payload } = {}) {
@@ -51,9 +54,20 @@ export function gameReducer(state = initialGameState, { type, payload } = {}) {
       };
 
     case actionTypes.RESTART:
-      return initialGameState;
+      return {
+        ...initialGameState,
+
+        // Don't reset the settings.
+        ...extractSettings(state),
+      };
 
     default:
       return state;
   }
+}
+
+function extractSettings(state) {
+  return Immutable.Map(state)
+    .filter((_, key) => initialSettings[key] !== undefined)
+    .toObject();
 }
