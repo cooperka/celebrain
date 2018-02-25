@@ -8,26 +8,29 @@ import {
   FormGroup,
   FormControlLabel,
 } from 'material-ui/Form';
-import { Button, Switch, Checkbox } from 'material-ui';
+import { Button, Switch, Checkbox, TextField } from 'material-ui';
 
-import { setGameState, setOnlyFirstNames, setPopularity } from '../actions';
+import { setNumCelebs, setOnlyFirstNames, setPopularity, setGameState } from '../actions';
 import { gameState } from '../reducers';
 
 import './styles.css';
 
 type Props = {
+  numCelebs: number,
   onlyFirstNames: boolean,
   popularityGroups: Array<boolean>,
 
-  handleStartGame: () => void,
+  handleSetNumCelebs: (number) => void,
   handleSetOnlyFirstNames: (boolean) => void,
   handleSetPopularity: (boolean, number) => void,
+  handleStartGame: () => void,
 };
 
 class Intro extends Component<Props> {
 
   static mapStateToProps(state) {
     return {
+      numCelebs: state.game.numCelebs,
       onlyFirstNames: state.game.onlyFirstNames,
       popularityGroups: state.game.popularityGroups,
     };
@@ -35,14 +38,17 @@ class Intro extends Component<Props> {
 
   static mapDispatchToProps(dispatch) {
     return {
-      handleStartGame: () => {
-        dispatch(setGameState(gameState.MEMORIZE));
+      handleSetNumCelebs: (numCelebs) => {
+        dispatch(setNumCelebs(numCelebs));
       },
       handleSetOnlyFirstNames: (isChecked) => {
         dispatch(setOnlyFirstNames(isChecked));
       },
       handleSetPopularity: (isChecked, groupIndex) => {
         dispatch(setPopularity(isChecked, groupIndex));
+      },
+      handleStartGame: () => {
+        dispatch(setGameState(gameState.MEMORIZE));
       },
     };
   }
@@ -77,13 +83,25 @@ class Intro extends Component<Props> {
   }
 
   render() {
-    const { onlyFirstNames, handleSetOnlyFirstNames, handleStartGame } = this.props;
+    const { numCelebs, onlyFirstNames, handleSetOnlyFirstNames, handleSetNumCelebs, handleStartGame } = this.props;
 
     return (
       <div className="Intro">
         <div className="title">New game</div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Settings</FormLabel>
+          <FormControlLabel
+            control={
+              <TextField
+                value={numCelebs}
+                onChange={(event) => handleSetNumCelebs(event.target.value)}
+                type="number"
+                margin="normal"
+                className="num-celebs"
+              />
+            }
+            label="Number of celebrities"
+          />
           <FormControlLabel
             control={
               <Switch

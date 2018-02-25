@@ -7,7 +7,7 @@ import Intro from './component';
 
 it('renders', () => {
   const tree = renderer.create(
-    <Intro popularityGroups={[true]} />,
+    <Intro numCelebs={5} popularityGroups={[true]} />,
   );
   expect(tree.toJSON()).toMatchSnapshot();
 });

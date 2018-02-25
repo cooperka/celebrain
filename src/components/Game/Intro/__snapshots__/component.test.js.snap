@@ -22,11 +22,54 @@ exports[`renders 1`] = `
     <label
       className="MuiFormControlLabel-root-9"
     >
+      <div
+        aria-describedby={undefined}
+        checked={undefined}
+        className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 num-celebs"
+        onBlur={[Function]}
+        onFocus={[Function]}
+      >
+        <div
+          className="MuiInput-root-12 MuiInput-formControl-13 MuiInput-inkbar-14 MuiInput-underline-18"
+          onBlur={[Function]}
+          onFocus={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            aria-required={false}
+            autoComplete={undefined}
+            autoFocus={undefined}
+            className="MuiInput-input-21 MuiInput-inputType-24"
+            defaultValue={undefined}
+            disabled={false}
+            id={undefined}
+            name={undefined}
+            onChange={[Function]}
+            onKeyDown={undefined}
+            onKeyUp={undefined}
+            placeholder={undefined}
+            readOnly={undefined}
+            required={undefined}
+            rows={undefined}
+            type="number"
+            value={5}
+          />
+        </div>
+      </div>
       <span
-        className="MuiSwitch-root-12"
+        className="MuiTypography-root-27 MuiTypography-body1-36 MuiFormControlLabel-label-11"
+      >
+        Number of celebrities
+      </span>
+    </label>
+    <label
+      className="MuiFormControlLabel-root-9"
+    >
+      <span
+        className="MuiSwitch-root-51"
       >
         <span
-          className="MuiButtonBase-root-32 MuiIconButton-root-26 MuiSwitchBase-root-21 MuiSwitchBase-default-23 MuiSwitch-default-16"
+          className="MuiButtonBase-root-71 MuiIconButton-root-65 MuiSwitchBase-root-60 MuiSwitchBase-default-62 MuiSwitch-default-55"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -41,14 +84,14 @@ exports[`renders 1`] = `
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-31"
+            className="MuiIconButton-label-70"
           >
             <span
-              className="MuiSwitch-icon-14"
+              className="MuiSwitch-icon-53"
             />
             <input
               checked={undefined}
-              className="MuiSwitchBase-input-22"
+              className="MuiSwitchBase-input-61"
               disabled={false}
               id={undefined}
               name={undefined}
@@ -59,15 +102,15 @@ exports[`renders 1`] = `
             />
           </span>
           <span
-            className="MuiTouchRipple-root-34"
+            className="MuiTouchRipple-root-73"
           />
         </span>
         <span
-          className="MuiSwitch-bar-13"
+          className="MuiSwitch-bar-52"
         />
       </span>
       <span
-        className="MuiTypography-root-41 MuiTypography-body1-50 MuiFormControlLabel-label-11"
+        className="MuiTypography-root-27 MuiTypography-body1-36 MuiFormControlLabel-label-11"
       >
         Only learn first names
       </span>
@@ -78,13 +121,13 @@ exports[`renders 1`] = `
       Celebrity popularity
     </label>
     <div
-      className="MuiFormGroup-root-65"
+      className="MuiFormGroup-root-80"
     >
       <label
         className="MuiFormControlLabel-root-9"
       >
         <span
-          className="MuiButtonBase-root-32 MuiIconButton-root-26 MuiSwitchBase-root-21 MuiSwitchBase-default-23 MuiCheckbox-default-67 MuiSwitchBase-checked-24 MuiCheckbox-checked-68 MuiCheckbox-checkedSecondary-70"
+          className="MuiButtonBase-root-71 MuiIconButton-root-65 MuiSwitchBase-root-60 MuiSwitchBase-default-62 MuiCheckbox-default-82 MuiSwitchBase-checked-63 MuiCheckbox-checked-83 MuiCheckbox-checkedSecondary-85"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -99,11 +142,11 @@ exports[`renders 1`] = `
           tabIndex={null}
         >
           <span
-            className="MuiIconButton-label-31"
+            className="MuiIconButton-label-70"
           >
             <svg
               aria-hidden="true"
-              className="MuiSvgIcon-root-72 MuiSvgIcon-fontSize-78"
+              className="MuiSvgIcon-root-87 MuiSvgIcon-fontSize-93"
               color={undefined}
               focusable="false"
               viewBox="0 0 24 24"
@@ -114,7 +157,7 @@ exports[`renders 1`] = `
             </svg>
             <input
               checked={true}
-              className="MuiSwitchBase-input-22"
+              className="MuiSwitchBase-input-61"
               disabled={false}
               id={undefined}
               name={undefined}
@@ -125,18 +168,18 @@ exports[`renders 1`] = `
             />
           </span>
           <span
-            className="MuiTouchRipple-root-34"
+            className="MuiTouchRipple-root-73"
           />
         </span>
         <span
-          className="MuiTypography-root-41 MuiTypography-body1-50 MuiFormControlLabel-label-11"
+          className="MuiTypography-root-27 MuiTypography-body1-36 MuiFormControlLabel-label-11"
         >
           75th percentile (popular)
         </span>
       </label>
     </div>
     <button
-      className="MuiButtonBase-root-32 MuiButton-root-79 start"
+      className="MuiButtonBase-root-71 MuiButton-root-94 start"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -153,12 +196,12 @@ exports[`renders 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-80"
+        className="MuiButton-label-95"
       >
         Start
       </span>
       <span
-        className="MuiTouchRipple-root-34"
+        className="MuiTouchRipple-root-73"
       />
     </button>
   </fieldset>

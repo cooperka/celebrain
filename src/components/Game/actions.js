@@ -4,6 +4,7 @@ export const actionTypes = {
   TOGGLE_GAME_STATE: 'TOGGLE_GAME_STATE',
   RESTART: 'RESTART',
 
+  SET_NUM_CELEBS: 'SET_NUM_CELEBS',
   SET_ONLY_FIRST_NAMES: 'SET_ONLY_FIRST_NAMES',
   SET_POPULARITY: 'SET_POPULARITY',
 };
@@ -19,6 +20,10 @@ export function restart() {
 }
 
 // --- Settings
+
+export function setNumCelebs(numCelebs) {
+  return { type: actionTypes.SET_NUM_CELEBS, payload: { numCelebs } };
+}
 
 export function setOnlyFirstNames(isChecked) {
   return { type: actionTypes.SET_ONLY_FIRST_NAMES, payload: { isChecked } };

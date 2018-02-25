@@ -5,3 +5,11 @@
 .Intro .start {
   margin: 1rem auto;
 }
+
+.Intro .num-celebs {
+  width: 5rem;
+
+  /* Fix some MUI weirdness. */
+  margin-right: 1.2rem;
+  margin-top: 0.8rem;
+}

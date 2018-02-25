@@ -15,6 +15,7 @@ const initialGameState = {
   imageOrder: undefined,
 
   // --- Settings.
+  numCelebs: 5,
   onlyFirstNames: false,
   popularityGroups: Immutable.List([true, false, false, false]),
 };
@@ -27,9 +28,15 @@ export function gameReducer(state = initialGameState, { type, payload } = {}) {
       return {
         ...state,
         currState: payload.state,
-        imageOrder: isNewGame ? getRandomOrder(5, state.popularityGroups) : state.imageOrder,
+        imageOrder: isNewGame ? getRandomOrder(state.numCelebs, state.popularityGroups) : state.imageOrder,
       };
     }
+
+    case actionTypes.SET_NUM_CELEBS:
+      return {
+        ...state,
+        numCelebs: Math.max(payload.numCelebs, 1),
+      };
 
     case actionTypes.SET_ONLY_FIRST_NAMES:
       return {
