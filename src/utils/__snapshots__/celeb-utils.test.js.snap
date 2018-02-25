@@ -21,3 +21,32 @@ exports[`celeb utils gets display full-name for 'Foo Bar' 1`] = `"Foo Bar"`;
 exports[`celeb utils gets display full-name for 'Foo' 1`] = `"Foo"`;
 
 exports[`celeb utils gets display names for celebs.json 1`] = `"Arnold Schwarzenegger"`;
+
+exports[`celeb utils gets percentile boundaries (2 groups) 1`] = `
+Array [
+  4,
+  0,
+]
+`;
+
+exports[`celeb utils gets percentile boundaries (4 groups) 1`] = `
+Array [
+  6,
+  4,
+  2,
+  0,
+]
+`;
+
+exports[`celeb utils gets sorted pageviews 1`] = `
+Immutable.List [
+  8,
+  7,
+  6,
+  5,
+  4,
+  3,
+  2,
+  1,
+]
+`;

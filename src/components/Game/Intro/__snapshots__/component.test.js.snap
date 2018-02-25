@@ -75,7 +75,7 @@ exports[`renders 1`] = `
     <label
       className="MuiFormLabel-root-5"
     >
-      Popularity
+      Celebrity popularity
     </label>
     <div
       className="MuiFormGroup-root-65"

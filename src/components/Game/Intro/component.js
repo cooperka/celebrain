@@ -93,7 +93,7 @@ class Intro extends Component<Props> {
             }
             label="Only learn first names"
           />
-          <FormLabel component="label">Popularity</FormLabel>
+          <FormLabel component="label">Celebrity popularity</FormLabel>
           {this.renderPopularityControls()}
           <Button className="start" onClick={handleStartGame}>Start</Button>
         </FormControl>

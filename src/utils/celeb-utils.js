@@ -1,8 +1,10 @@
+import { times } from 'ramda';
 import Immutable from 'immutable';
 
-import imageData from '../celebs.json';
+import celebs from '../celebs.json';
 
-const numCelebs = imageData.length;
+const numCelebs = celebs.length;
+const percentileBoundaries = getPercentileBoundaries(celebs, 4);
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
@@ -22,10 +24,17 @@ export function getDisplayName({ title = '' }, onlyFirstName) {
  * @returns {array} An array of X unique random numbers,
  * each based on the total number of possible celebs.
  */
-export function getRandomOrder(numQuestions = 5) {
+export function getRandomOrder(numQuestions = 5, percentiles = [true, false, false, false]) {
   let set = Immutable.Set();
   while (set.size < numQuestions) {
-    set = set.add(getRandomInt(numCelebs));
+    const index = getRandomInt(numCelebs);
+    const { pageviews } = celebs[index];
+    const percentileIndex = getPercentileIndex(percentileBoundaries, pageviews);
+    if (IS_DEV) console.debug('Pageviews:', pageviews, 'Index:', percentileIndex);
+
+    if (percentiles[percentileIndex]) {
+      set = set.add(index);
+    }
   }
 
   const order = set.toArray();
@@ -36,6 +45,24 @@ export function getRandomOrder(numQuestions = 5) {
 /**
  * @returns {number} A random integer between 0 and (max - 1).
  */
-function getRandomInt(max) {
+export function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
+}
+
+export function getPercentileBoundaries(data, numGroups) {
+  const sortedPageviews = getSortedPageviews(data);
+  const numCelebsPerGroup = sortedPageviews.size / numGroups;
+  return [...times((n) => sortedPageviews.get(Math.floor(numCelebsPerGroup * (n + 1))), numGroups - 1), 0];
+}
+
+export function getSortedPageviews(data) {
+  return data
+    .reduce((reduction, celeb) => reduction.push(celeb.pageviews || 0), Immutable.List().asMutable())
+    .sort()
+    .reverse()
+    .asImmutable();
+}
+
+export function getPercentileIndex(boundaries, pageviews) {
+  return boundaries.findIndex((boundary) => pageviews >= boundary);
 }
