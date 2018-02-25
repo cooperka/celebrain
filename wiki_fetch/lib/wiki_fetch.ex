@@ -44,13 +44,18 @@ defmodule WikiFetch do
 
     :ok = MapAgent.start_link(data_by_title)
 
-    receive_chunks(fn (response) ->
-      item = List.first(response["items"])
-      MapAgent.merge_values(item["article"], %{pageviews: item["views"]})
+    receive_json_chunks(fn (response) ->
+      if response["items"] == nil do
+        IO.puts :stderr, "No items: " <> inspect response
+      else
+        item = List.first(response["items"])
+        MapAgent.merge_values(item["article"], %{pageviews: item["views"]})
+      end
     end)
   end
 
   defp get_pageviews(title) do
+    title = URI.encode_www_form(title);
     fetch_async! "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/#{title}/monthly/#{@timeframe}"
   end
 
@@ -76,7 +81,8 @@ defmodule WikiFetch do
       nil -> ""
       _ -> "&cmcontinue=#{continue_key}"
     end
-    response = fetch_wiki! "action=query&format=json&list=categorymembers&cmtitle=Category%3A#{@category}&cmlimit=#{@page_size}#{extra_params}"
+    category = URI.encode_www_form(@category);
+    response = fetch_wiki! "action=query&format=json&list=categorymembers&cmtitle=Category%3A#{category}&cmlimit=#{@page_size}#{extra_params}"
 
     # Save data to a map indexed by page ID.
     new_members = response["query"]["categorymembers"]

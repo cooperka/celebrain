@@ -36,7 +36,7 @@ defmodule WikiFetch.Utils do
 
     warnings = response["warnings"]
     if warnings != nil do
-      IO.puts IO.ANSI.light_yellow() <> inspect warnings
+      IO.puts :stderr, "Wiki warnings: " <> inspect warnings
     end
 
     response
@@ -72,7 +72,7 @@ defmodule WikiFetch.Utils do
 
     case HTTPoison.get(url, %{}, stream_to: stream_to) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        {:ok, decode body}
+        {:ok, decode(body)}
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         {:error, "Error: 404"}
       {:error, %HTTPoison.Error{reason: reason}} ->
@@ -82,7 +82,7 @@ defmodule WikiFetch.Utils do
     end
   end
 
-  def receive_chunks(callback) do
+  def receive_json_chunks(callback) do
     {status, chunk} = receive do
       %HTTPoison.AsyncStatus{} -> {:ignore, nil}
       %HTTPoison.AsyncHeaders{} -> {:ignore, nil}
@@ -92,19 +92,28 @@ defmodule WikiFetch.Utils do
     end
 
     if status == :chunk do
-      callback.(Poison.decode! chunk)
+      json = decode(chunk)
+      callback.(json)
     end
 
     if status == :complete do
       send(self(), status)
     else
-      receive_chunks(callback)
+      receive_json_chunks(callback)
     end
   end
 
-  defp decode body do
-    body
-    |> Poison.decode!
+  defp decode(body) do
+    {status, json} = case Poison.decode(body) do
+      {:ok, json} -> {:ok, json}
+      _ -> {:error, nil}
+    end
+
+    if status == :error do
+      IO.puts :stderr, "Error decoding: " <> inspect body
+    end
+
+    json
   end
 
 end
