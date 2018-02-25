@@ -2,12 +2,12 @@
 
 exports[`renders 1`] = `
 <a
-  href="https://commons.wikimedia.org/wiki/File:Nehemiah_Persoff_1960.JPG"
+  href="https://commons.wikimedia.org/wiki/File:Arnold_Schwarzenegger_in_Film_Festival.jpg"
 >
   <img
     alt="Celebrity"
     className="CelebImage-shadowed-1"
-    src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Nehemiah_Persoff_1960.JPG"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Arnold_Schwarzenegger_in_Film_Festival.jpg/800px-Arnold_Schwarzenegger_in_Film_Festival.jpg"
   />
 </a>
 `;

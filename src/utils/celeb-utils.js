@@ -1,8 +1,8 @@
 const utils = {
 
-  getDisplayName({ name = '' }, onlyFirstName) {
+  getDisplayName({ title = '' }, onlyFirstName) {
     // Remove any trailing annotation (e.g. "(Actor)").
-    const realName = name.replace(/ \(.*/, '').trim();
+    const realName = title.replace(/ \(.*/, '').trim();
 
     return onlyFirstName
       ? realName.split(' ')[0]
