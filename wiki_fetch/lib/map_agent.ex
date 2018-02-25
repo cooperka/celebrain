@@ -18,8 +18,7 @@ defmodule WikiFetch.MapAgent do
   end
 
   def merge_values(key, values) do
-    IO.puts "Adding to #{key}:"
-    IO.inspect values
+    IO.puts "Adding to #{key}: " <> inspect values
     Agent.update(__MODULE__, fn(map) ->
       Map.update!(map, key, fn (curr_value) -> Map.merge(curr_value, values) end)
     end)

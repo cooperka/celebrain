@@ -41,12 +41,12 @@ defmodule WikiFetch do
   @spec get_all_pageviews([]) :: :ok
   defp get_all_pageviews(data) do
     data
+    # Don't need to fetch if it already exists.
+    |> Enum.filter(fn (member) -> !member["pageviews"] end)
     |> Enum.each(fn (member) -> get_pageviews(snake_case(member["title"])) end)
 
     data_by_title = data
-    |> Enum.reduce(%{}, fn (member, reduction) ->
-      Map.put(reduction, snake_case(member["title"]), Map.delete(member, "pageviews"))
-    end)
+    |> Enum.reduce(%{}, fn (member, reduction) -> Map.put(reduction, snake_case(member["title"]), member) end)
 
     :ok = MapAgent.start_link(data_by_title)
 
