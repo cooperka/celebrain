@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`celeb utils gets display first-name for '' 1`] = `""`;
+
+exports[`celeb utils gets display first-name for 'Foo Bar (Actor)' 1`] = `"Foo"`;
+
+exports[`celeb utils gets display first-name for 'Foo Bar Baz' 1`] = `"Foo"`;
+
+exports[`celeb utils gets display first-name for 'Foo Bar' 1`] = `"Foo"`;
+
+exports[`celeb utils gets display first-name for 'Foo' 1`] = `"Foo"`;
+
+exports[`celeb utils gets display full-name for '' 1`] = `""`;
+
+exports[`celeb utils gets display full-name for 'Foo Bar (Actor)' 1`] = `"Foo Bar"`;
+
+exports[`celeb utils gets display full-name for 'Foo Bar Baz' 1`] = `"Foo Bar Baz"`;
+
+exports[`celeb utils gets display full-name for 'Foo Bar' 1`] = `"Foo Bar"`;
+
+exports[`celeb utils gets display full-name for 'Foo' 1`] = `"Foo"`;
+
+exports[`celeb utils gets display names for celebs.json 1`] = `"Arnold Schwarzenegger"`;
