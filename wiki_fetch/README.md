@@ -2,7 +2,7 @@
 
 A simple Elixir app to fetch data from the Wikipedia API.
 
-Static data can then be consumed by the Celebrain app.
+Static data can then be consumed by the Neuro Name app.
 
 ## Usage
 

@@ -7,7 +7,7 @@ exports[`renders 1`] = `
   <div
     className="title"
   >
-    Celebrain
+    Neuro Name
   </div>
   <div
     className="section"

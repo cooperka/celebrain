@@ -9,7 +9,7 @@ import './styles.css';
 function Home() {
   return (
     <div className="Home page">
-      <div className="title">Celebrain</div>
+      <div className="title">Neuro Name</div>
       <div className="section">
         <div className="subtitle">
           Improve your memory by matching celebrity names to faces.

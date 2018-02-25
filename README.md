@@ -1,15 +1,16 @@
-# Celebrain
+# Neuro Name
 
-[![Build status](https://travis-ci.org/cooperka/celebrain.svg?branch=master)](https://travis-ci.org/cooperka/celebrain)
+[![Build status](https://travis-ci.org/cooperka/neuro-name.svg?branch=master)](https://travis-ci.org/cooperka/neuro-name)
 
-Simple game to improve memory by matching celebrity names to faces.
-Freely available at <https://celeb.cooperka.com>.
+Improve your memory by matching celebrity names to faces.
+
+Freely available at <https://neuroname.org/>.
 
 ## Developing
 
 1. `yarn install`
 2. `yarn start`
-    - It will automatically open <http://localhost:3000/> in your browser
+    - Open <http://localhost:3000/> in your browser
 3. `yarn test`
 
 ## Publishing

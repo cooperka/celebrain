@@ -115,7 +115,7 @@ exports[`renders 1`] = `
       <a
         className="MuiButtonBase-root-53 MuiButton-root-38 NavButton "
         exact={undefined}
-        href="https://github.com/cooperka/celebrain"
+        href="https://github.com/cooperka/neuro-name"
         onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}

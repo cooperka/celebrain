@@ -2,10 +2,10 @@ import React from 'react';
 
 export default {
 
-  siteRoot: 'https://celeb.cooperka.com',
+  siteRoot: 'https://neuroname.org',
 
   getSiteData: () => ({
-    title: 'Celebrain',
+    title: 'Neuro Name',
   }),
 
   getRoutes: () => [
@@ -38,8 +38,8 @@ export default {
         <link rel="manifest" href="/site.webmanifest?v=47MJ24bJM7" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg?v=47MJ24bJM7" color="#000000" />
         <link rel="shortcut icon" href="/favicon.ico?v=47MJ24bJM7" />
-        <meta name="apple-mobile-web-app-title" content="LSR" />
-        <meta name="application-name" content="LSR" />
+        <meta name="apple-mobile-web-app-title" content="Neuro Name" />
+        <meta name="application-name" content="Neuro Name" />
         <meta name="msapplication-TileColor" content="#603cba" />
         <meta name="theme-color" content="#ffffff" />
 

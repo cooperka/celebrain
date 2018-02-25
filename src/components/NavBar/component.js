@@ -21,7 +21,7 @@ function NavBar() {
           {routes.map((route) => (
             <NavButton key={route.path} linkTo={route.path}>{route.displayName}</NavButton>
           ))}
-          <NavButton externalLinkTo="https://github.com/cooperka/celebrain">GitHub</NavButton>
+          <NavButton externalLinkTo="https://github.com/cooperka/neuro-name">GitHub</NavButton>
         </div>
       </Toolbar>
     </AppBar>
