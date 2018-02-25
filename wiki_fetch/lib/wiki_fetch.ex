@@ -35,6 +35,8 @@ defmodule WikiFetch do
 
     data_by_title
     |> Map.values()
+    # Make it a little more deterministic for git diffs.
+    |> Enum.sort(fn (m1, m2) -> m1["id"] < m2["id"] end)
     |> write_data()
   end
 
