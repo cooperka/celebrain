@@ -70,7 +70,7 @@ defmodule WikiFetch.Utils do
       nil
     end
 
-    case HTTPoison.get(url, %{}, stream_to: stream_to) do
+    case HTTPoison.get(url, %{}, stream_to: stream_to, hackney: [pool: :wiki_pool]) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, decode(body)}
       {:ok, %HTTPoison.Response{status_code: 404}} ->

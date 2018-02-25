@@ -1,4 +1,6 @@
 defmodule WikiFetch do
+  use Application
+
   import WikiFetch.Utils
   alias WikiFetch.MapAgent
 
@@ -13,6 +15,10 @@ defmodule WikiFetch do
   @members_cap 100 # Halt once we get this many (in case there are thousands of members).
   @thumbsize 800 # Max dimension size (either width or height) for images.
   @timeframe "2018010100/2018020100" # Start/end dates for pageview counts. 1st of a month to 1st of the next month.
+
+  def start(_type, _args) do
+    :ok = :hackney_pool.start_pool(:wiki_pool, [timeout: 5000, max_connections: 1])
+  end
 
   @doc """
   Add pageview data to the existing data.json file.
