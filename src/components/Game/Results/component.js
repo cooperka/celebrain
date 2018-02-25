@@ -27,7 +27,7 @@ class Results extends Component<Props> {
     return {
       imageOrder: state.game.imageOrder,
       inputs: state.recall.inputs,
-      onlyFirstNames: state.settings.onlyFirstNames,
+      onlyFirstNames: state.game.onlyFirstNames,
     };
   }
 

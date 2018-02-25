@@ -21,10 +21,12 @@ export function getDisplayName({ title = '' }, onlyFirstName) {
 }
 
 /**
+ * @param {number} numQuestions
+ * @param {Immutable.List} popularityGroups
  * @returns {array} An array of X unique random numbers,
  * each based on the total number of possible celebs.
  */
-export function getRandomOrder(numQuestions = 5, percentiles = [true, false, false, false]) {
+export function getRandomOrder(numQuestions, popularityGroups) {
   let set = Immutable.Set();
   while (set.size < numQuestions) {
     const index = getRandomInt(numCelebs);
@@ -32,7 +34,7 @@ export function getRandomOrder(numQuestions = 5, percentiles = [true, false, fal
     const percentileIndex = getPercentileIndex(percentileBoundaries, pageviews);
     if (IS_DEV) console.debug('Pageviews:', pageviews, 'Index:', percentileIndex);
 
-    if (percentiles[percentileIndex]) {
+    if (popularityGroups.get(percentileIndex)) {
       set = set.add(index);
     }
   }

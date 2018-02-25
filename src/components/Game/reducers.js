@@ -13,6 +13,10 @@ export const gameState = {
 const initialGameState = {
   currState: gameState.INTRO,
   imageOrder: undefined,
+
+  // --- Settings.
+  onlyFirstNames: false,
+  popularityGroups: Immutable.List([true, false, false, false]),
 };
 
 export function gameReducer(state = initialGameState, { type, payload } = {}) {
@@ -23,25 +27,10 @@ export function gameReducer(state = initialGameState, { type, payload } = {}) {
       return {
         ...state,
         currState: payload.state,
-        imageOrder: isNewGame ? getRandomOrder() : state.imageOrder,
+        imageOrder: isNewGame ? getRandomOrder(5, state.popularityGroups) : state.imageOrder,
       };
     }
 
-    case actionTypes.RESTART:
-      return initialGameState;
-
-    default:
-      return state;
-  }
-}
-
-const initialSettingsState = {
-  onlyFirstNames: false,
-  popularityGroups: Immutable.List([true, false, false, false]),
-};
-
-export function settingsReducer(state = initialSettingsState, { type, payload } = {}) {
-  switch (type) {
     case actionTypes.SET_ONLY_FIRST_NAMES:
       return {
         ...state,
@@ -53,6 +42,9 @@ export function settingsReducer(state = initialSettingsState, { type, payload } 
         ...state,
         popularityGroups: state.popularityGroups.set(payload.groupIndex, payload.isChecked),
       };
+
+    case actionTypes.RESTART:
+      return initialGameState;
 
     default:
       return state;

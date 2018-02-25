@@ -28,8 +28,8 @@ class Intro extends Component<Props> {
 
   static mapStateToProps(state) {
     return {
-      onlyFirstNames: state.settings.onlyFirstNames,
-      popularityGroups: state.settings.popularityGroups,
+      onlyFirstNames: state.game.onlyFirstNames,
+      popularityGroups: state.game.popularityGroups,
     };
   }
 

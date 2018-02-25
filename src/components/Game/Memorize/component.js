@@ -27,7 +27,7 @@ class Memorize extends Component<Props> {
     return {
       imageOrder: state.game.imageOrder,
       currIndex: state.memorize.currIndex,
-      onlyFirstNames: state.settings.onlyFirstNames,
+      onlyFirstNames: state.game.onlyFirstNames,
     };
   }
 
