@@ -5,6 +5,7 @@ export const actionTypes = {
   RESTART: 'RESTART',
 
   SET_ONLY_FIRST_NAMES: 'SET_ONLY_FIRST_NAMES',
+  SET_POPULARITY: 'SET_POPULARITY',
 };
 
 // --- Action creators
@@ -21,4 +22,8 @@ export function restart() {
 
 export function setOnlyFirstNames(isChecked) {
   return { type: actionTypes.SET_ONLY_FIRST_NAMES, payload: { isChecked } };
+}
+
+export function setPopularity(isChecked, groupIndex) {
+  return { type: actionTypes.SET_POPULARITY, payload: { isChecked, groupIndex } };
 }

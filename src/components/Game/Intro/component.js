@@ -8,18 +8,20 @@ import {
   FormGroup,
   FormControlLabel,
 } from 'material-ui/Form';
-import { Button, Switch } from 'material-ui';
+import { Button, Switch, Checkbox } from 'material-ui';
 
-import { setGameState, setOnlyFirstNames } from '../actions';
+import { setGameState, setOnlyFirstNames, setPopularity } from '../actions';
 import { gameState } from '../reducers';
 
 import './styles.css';
 
 type Props = {
   onlyFirstNames: boolean,
+  popularityGroups: Array<boolean>,
 
   handleStartGame: () => void,
-  handleSetOnlyFirstNames: () => void,
+  handleSetOnlyFirstNames: (boolean) => void,
+  handleSetPopularity: (boolean, number) => void,
 };
 
 class Intro extends Component<Props> {
@@ -27,6 +29,7 @@ class Intro extends Component<Props> {
   static mapStateToProps(state) {
     return {
       onlyFirstNames: state.settings.onlyFirstNames,
+      popularityGroups: state.settings.popularityGroups,
     };
   }
 
@@ -35,10 +38,42 @@ class Intro extends Component<Props> {
       handleStartGame: () => {
         dispatch(setGameState(gameState.MEMORIZE));
       },
-      handleSetOnlyFirstNames: (_, isChecked) => {
+      handleSetOnlyFirstNames: (isChecked) => {
         dispatch(setOnlyFirstNames(isChecked));
       },
+      handleSetPopularity: (isChecked, groupIndex) => {
+        dispatch(setPopularity(isChecked, groupIndex));
+      },
     };
+  }
+
+  renderPopularityControls() {
+    const { popularityGroups, handleSetPopularity } = this.props;
+
+    const labels = [
+      '75th percentile (popular)',
+      '50-75th percentile',
+      '25-50th percentile',
+      '0-25th percentile (uncommon)',
+    ];
+
+    return (
+      <FormGroup>
+        {popularityGroups.map((isChecked, index) => (
+          <FormControlLabel
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            control={
+              <Checkbox
+                checked={isChecked}
+                onChange={(_, checked) => handleSetPopularity(checked, index)}
+              />
+            }
+            label={labels[index]}
+          />
+        ))}
+      </FormGroup>
+    );
   }
 
   render() {
@@ -49,17 +84,17 @@ class Intro extends Component<Props> {
         <div className="title">New game</div>
         <FormControl component="fieldset">
           <FormLabel component="legend">Settings</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={onlyFirstNames}
-                  onChange={handleSetOnlyFirstNames}
-                />
-              }
-              label="Only learn first names"
-            />
-          </FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={onlyFirstNames}
+                onChange={(_, isChecked) => handleSetOnlyFirstNames(isChecked)}
+              />
+            }
+            label="Only learn first names"
+          />
+          <FormLabel component="label">Popularity</FormLabel>
+          {this.renderPopularityControls()}
           <Button className="start" onClick={handleStartGame}>Start</Button>
         </FormControl>
       </div>

@@ -42,6 +42,7 @@ export function gameReducer(state = initialGameState, { type, payload } = {}) {
 
 const initialSettingsState = {
   onlyFirstNames: false,
+  popularityGroups: Immutable.List([true, false, false, false]),
 };
 
 export function settingsReducer(state = initialSettingsState, { type, payload } = {}) {
@@ -50,6 +51,12 @@ export function settingsReducer(state = initialSettingsState, { type, payload } 
       return {
         ...state,
         onlyFirstNames: payload.isChecked,
+      };
+
+    case actionTypes.SET_POPULARITY:
+      return {
+        ...state,
+        popularityGroups: state.popularityGroups.set(payload.groupIndex, payload.isChecked),
       };
 
     default:

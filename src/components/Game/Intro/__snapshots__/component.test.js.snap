@@ -19,65 +19,124 @@ exports[`renders 1`] = `
     >
       Settings
     </legend>
-    <div
-      className="MuiFormGroup-root-9"
+    <label
+      className="MuiFormControlLabel-root-9"
     >
-      <label
-        className="MuiFormControlLabel-root-11"
+      <span
+        className="MuiSwitch-root-12"
       >
         <span
-          className="MuiSwitch-root-14"
+          className="MuiButtonBase-root-32 MuiIconButton-root-26 MuiSwitchBase-root-21 MuiSwitchBase-default-23 MuiSwitch-default-16"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role={undefined}
+          tabIndex={null}
         >
           <span
-            className="MuiButtonBase-root-34 MuiIconButton-root-28 MuiSwitchBase-root-23 MuiSwitchBase-default-25 MuiSwitch-default-18"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            role={undefined}
-            tabIndex={null}
+            className="MuiIconButton-label-31"
           >
             <span
-              className="MuiIconButton-label-33"
-            >
-              <span
-                className="MuiSwitch-icon-16"
-              />
-              <input
-                checked={undefined}
-                className="MuiSwitchBase-input-24"
-                disabled={false}
-                id={undefined}
-                name={undefined}
-                onChange={[Function]}
-                tabIndex={undefined}
-                type="checkbox"
-                value={undefined}
-              />
-            </span>
-            <span
-              className="MuiTouchRipple-root-36"
+              className="MuiSwitch-icon-14"
+            />
+            <input
+              checked={undefined}
+              className="MuiSwitchBase-input-22"
+              disabled={false}
+              id={undefined}
+              name={undefined}
+              onChange={[Function]}
+              tabIndex={undefined}
+              type="checkbox"
+              value={undefined}
             />
           </span>
           <span
-            className="MuiSwitch-bar-15"
+            className="MuiTouchRipple-root-34"
           />
         </span>
         <span
-          className="MuiTypography-root-43 MuiTypography-body1-52 MuiFormControlLabel-label-13"
+          className="MuiSwitch-bar-13"
+        />
+      </span>
+      <span
+        className="MuiTypography-root-41 MuiTypography-body1-50 MuiFormControlLabel-label-11"
+      >
+        Only learn first names
+      </span>
+    </label>
+    <label
+      className="MuiFormLabel-root-5"
+    >
+      Popularity
+    </label>
+    <div
+      className="MuiFormGroup-root-65"
+    >
+      <label
+        className="MuiFormControlLabel-root-9"
+      >
+        <span
+          className="MuiButtonBase-root-32 MuiIconButton-root-26 MuiSwitchBase-root-21 MuiSwitchBase-default-23 MuiCheckbox-default-67 MuiSwitchBase-checked-24 MuiCheckbox-checked-68 MuiCheckbox-checkedSecondary-70"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role={undefined}
+          tabIndex={null}
         >
-          Only learn first names
+          <span
+            className="MuiIconButton-label-31"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root-72 MuiSvgIcon-fontSize-78"
+              color={undefined}
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+              />
+            </svg>
+            <input
+              checked={true}
+              className="MuiSwitchBase-input-22"
+              disabled={false}
+              id={undefined}
+              name={undefined}
+              onChange={[Function]}
+              tabIndex={undefined}
+              type="checkbox"
+              value={undefined}
+            />
+          </span>
+          <span
+            className="MuiTouchRipple-root-34"
+          />
+        </span>
+        <span
+          className="MuiTypography-root-41 MuiTypography-body1-50 MuiFormControlLabel-label-11"
+        >
+          75th percentile (popular)
         </span>
       </label>
     </div>
     <button
-      className="MuiButtonBase-root-34 MuiButton-root-67 start"
+      className="MuiButtonBase-root-32 MuiButton-root-79 start"
       disabled={false}
       onBlur={[Function]}
       onClick={undefined}
@@ -94,12 +153,12 @@ exports[`renders 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-68"
+        className="MuiButton-label-80"
       >
         Start
       </span>
       <span
-        className="MuiTouchRipple-root-36"
+        className="MuiTouchRipple-root-34"
       />
     </button>
   </fieldset>
