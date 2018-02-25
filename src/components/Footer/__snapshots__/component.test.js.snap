@@ -5,9 +5,6 @@ exports[`renders 1`] = `
   className="Footer"
 >
   <div>
-    Full website coming soon.
-  </div>
-  <div>
     © 2018 Kevin Cooper
   </div>
 </div>
