@@ -1,10 +1,10 @@
 import imageData from '../celebs.json';
 
-import celebUtils from './celeb-utils';
+import { getDisplayName } from './celeb-utils';
 
 describe('celeb utils', () => {
   it('gets display names for celebs.json', () => {
-    const displayName = celebUtils.getDisplayName(imageData[0]);
+    const displayName = getDisplayName(imageData[0]);
     expect(displayName).toMatchSnapshot();
   });
 
@@ -12,14 +12,14 @@ describe('celeb utils', () => {
 
   titles.forEach((title) => {
     it(`gets display full-name for '${title}'`, () => {
-      const displayName = celebUtils.getDisplayName({ title });
+      const displayName = getDisplayName({ title });
       expect(displayName).toMatchSnapshot();
     });
   });
 
   titles.forEach((title) => {
     it(`gets display first-name for '${title}'`, () => {
-      const displayName = celebUtils.getDisplayName({ title }, true);
+      const displayName = getDisplayName({ title }, true);
       expect(displayName).toMatchSnapshot();
     });
   });

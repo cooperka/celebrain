@@ -6,7 +6,7 @@ import { Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
 
-import celebUtils from '../../../utils/celeb-utils';
+import { getDisplayName } from '../../../utils/celeb-utils';
 import { restart } from '../actions';
 
 import './styles.css';
@@ -42,7 +42,7 @@ class Results extends Component<Props> {
   renderGuess(guess = '', index) {
     const { imageData, imageOrder, onlyFirstNames } = this.props;
     const celeb = imageData[imageOrder[index]];
-    const actualName = celebUtils.getDisplayName(celeb, onlyFirstNames);
+    const actualName = getDisplayName(celeb, onlyFirstNames);
     const isMatch = guess.trim().toLowerCase() === actualName.trim().toLowerCase();
     const guessColor = isMatch ? 'correct' : 'incorrect';
 

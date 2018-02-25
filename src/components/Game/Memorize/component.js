@@ -6,7 +6,7 @@ import { Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
 
-import celebUtils from '../../../utils/celeb-utils';
+import { getDisplayName } from '../../../utils/celeb-utils';
 import { next } from './actions';
 
 import './styles.css';
@@ -54,7 +54,7 @@ class Memorize extends Component<Props> {
           <CelebImage celeb={currCeleb} />
           <div className="subtitle">
             <a className="name" href={`https://en.wikipedia.org/?curid=${currCeleb.id}`}>
-              {celebUtils.getDisplayName(currCeleb, onlyFirstNames)}
+              {getDisplayName(currCeleb, onlyFirstNames)}
             </a>
           </div>
         </div>
