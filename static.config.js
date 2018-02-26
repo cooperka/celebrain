@@ -44,10 +44,12 @@ export default {
         <meta name="theme-color" content="#ffffff" />
 
         {/* Facebook Open Graph markup: https://developers.facebook.com/tools/debug/og/object/ */}
-        <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://lsrfocus.com/facebook-preview-v1.png" />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="400" />
+        <meta property="og:image" content="https://neuroname.org/facebook-preview-v1.png" />
+        <meta property="og:image:width" content="279" />
+        <meta property="og:image:height" content="279" />
+        <meta property="og:description" content="Improve your memory by matching celebrity names to faces." />
+        <meta property="og:title" content="Neuro Name" />
+        <meta property="og:url" content="https://neuroname.org/" />
 
         {/* http://google.github.io/material-design-icons/#icon-font-for-the-web */}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
