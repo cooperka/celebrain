@@ -5,7 +5,7 @@ export default {
   siteRoot: 'https://neuroname.org',
 
   getSiteData: () => ({
-    title: 'Neuro Name',
+    title: 'NeuroName',
   }),
 
   getRoutes: () => [
@@ -38,8 +38,8 @@ export default {
         <link rel="manifest" href="/site.webmanifest?v=123" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg?v=123" color="#f50057" />
         <link rel="shortcut icon" href="/favicon.ico?v=123" />
-        <meta name="apple-mobile-web-app-title" content="Neuro Name" />
-        <meta name="application-name" content="Neuro Name" />
+        <meta name="apple-mobile-web-app-title" content="NeuroName" />
+        <meta name="application-name" content="NeuroName" />
         <meta name="msapplication-TileColor" content="#2b5797" />
         <meta name="theme-color" content="#ffffff" />
 
@@ -48,7 +48,7 @@ export default {
         <meta property="og:image:width" content="279" />
         <meta property="og:image:height" content="279" />
         <meta property="og:description" content="Improve your memory by matching celebrity names to faces." />
-        <meta property="og:title" content="Neuro Name" />
+        <meta property="og:title" content="NeuroName" />
         <meta property="og:url" content="https://neuroname.org/" />
 
         {/* http://google.github.io/material-design-icons/#icon-font-for-the-web */}

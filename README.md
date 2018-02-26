@@ -1,4 +1,4 @@
-# Neuro Name
+# NeuroName
 
 [![Build status](https://travis-ci.org/cooperka/neuro-name.svg?branch=master)](https://travis-ci.org/cooperka/neuro-name)
 
