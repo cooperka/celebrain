@@ -20,6 +20,26 @@ function About() {
       </div>
 
       <div className="section">
+        <div className="subtitle">Which celebrities?</div>
+        <div className="description">
+          Currently, the pool of celebrities comes from the Wikipedia categories for American
+          {' '}<a href="https://en.wikipedia.org/wiki/Category:American_male_film_actors">actors</a>
+          {' and '}
+          <a href="https://en.wikipedia.org/wiki/Category:American_film_actresses">actresses</a>
+          . It includes every person in each of those categories for whom a picture is available --
+          about 5300 men and 4200 women. This will be expanded soon.
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="subtitle">How is popularity determined?</div>
+        <div className="description">
+          The <a href="https://www.mediawiki.org/wiki/API:Main_page">Wikimedia API</a> provides
+          monthly Wikipedia pageview metrics which I used to determine popularity.
+        </div>
+      </div>
+
+      <div className="section">
         <div className="subtitle">Attribution</div>
         <div className="description">
           Images are sourced from Wikipedia and may be subject to copyright.
