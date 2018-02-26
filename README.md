@@ -1,4 +1,4 @@
-# NeuroName
+# <img src="src/images/readme-logo.svg" alt="NeuroName logo" height="60" />
 
 [![Build status](https://travis-ci.org/cooperka/neuro-name.svg?branch=master)](https://travis-ci.org/cooperka/neuro-name)
 
