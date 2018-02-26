@@ -1,14 +1,14 @@
 {
-    "name": "LSR",
-    "short_name": "LSR",
+    "name": "Neuro Name",
+    "short_name": "Neuro Name",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png?v=47MJ24bJM7",
+            "src": "/android-chrome-192x192.png?v=123",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png?v=47MJ24bJM7",
+            "src": "/android-chrome-512x512.png?v=123",
             "sizes": "512x512",
             "type": "image/png"
         }

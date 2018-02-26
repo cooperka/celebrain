@@ -32,20 +32,20 @@ export default {
 
         <title>{siteData.title}</title>
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=47MJ24bJM7" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=47MJ24bJM7" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=47MJ24bJM7" />
-        <link rel="manifest" href="/site.webmanifest?v=47MJ24bJM7" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=47MJ24bJM7" color="#000000" />
-        <link rel="shortcut icon" href="/favicon.ico?v=47MJ24bJM7" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=123" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=123" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=123" />
+        <link rel="manifest" href="/site.webmanifest?v=123" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=123" color="#f50057" />
+        <link rel="shortcut icon" href="/favicon.ico?v=123" />
         <meta name="apple-mobile-web-app-title" content="Neuro Name" />
         <meta name="application-name" content="Neuro Name" />
-        <meta name="msapplication-TileColor" content="#603cba" />
+        <meta name="msapplication-TileColor" content="#2b5797" />
         <meta name="theme-color" content="#ffffff" />
 
         {/* Facebook Open Graph markup: https://developers.facebook.com/tools/debug/og/object/ */}
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://lsrfocus.com/facebook-preview-v3.png" />
+        <meta property="og:image" content="https://lsrfocus.com/facebook-preview-v1.png" />
         <meta property="og:image:width" content="800" />
         <meta property="og:image:height" content="400" />
 
