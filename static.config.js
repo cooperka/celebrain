@@ -55,7 +55,7 @@ export default {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
         {/* Google Analytics - Global site tag */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110594588-3" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110594588-4" />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={getGoogleAnalyticsScript()}
@@ -80,7 +80,7 @@ function getGoogleAnalyticsScript() {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-110594588-3');
+    gtag('config', 'UA-110594588-4');
   `);
 }
 
