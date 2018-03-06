@@ -30,8 +30,9 @@ export function configureStore(rootReducer) {
  * Set the `state` var for Chrome console debugging.
  */
 function configureDebugging(store) {
-  if (IS_DEV) {
+  // Only if window is available; skip during static builds.
+  if (IS_DEV && typeof window !== 'undefined') {
     Object.defineProperty(window, 'state', { get: () => store.getState() });
-    global.dispatch = store.dispatch;
+    window.dispatch = store.dispatch;
   }
 }

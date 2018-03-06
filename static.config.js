@@ -1,17 +1,24 @@
 import React from 'react';
 
+const IS_DEV = process.env.NODE_ENV === 'development';
+
 export default {
 
-  siteRoot: 'https://neuroname.org',
+  siteRoot: IS_DEV ? 'http://localhost:3000' : 'https://neuroname.org',
 
   getSiteData: () => ({
     title: 'NeuroName',
   }),
 
+  // Note: Make sure to also update routes.js routes.
   getRoutes: () => [
     {
       path: '/',
       component: 'src/components/Home',
+    },
+    {
+      path: '/game',
+      component: 'src/components/Game',
     },
     {
       path: '/about',

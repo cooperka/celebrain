@@ -2,6 +2,7 @@ import Home from './components/Home';
 import Game from './components/Game';
 import About from './components/About';
 
+// Note: Make sure to also update static.config routes.
 const routes = [
   {
     path: '/',
