@@ -17,13 +17,20 @@ function NavButton(props: Props) {
   const { linkTo, externalLinkTo, bordered, children } = props;
   const isRouterLink = !!linkTo;
 
+  const extraProps = isRouterLink ? {
+    exact: true,
+  } : {
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  };
+
   return (
     <Button
       component={isRouterLink ? NavLink : 'a'}
       className={['NavButton', bordered ? 'bordered' : ''].join(' ')}
       to={linkTo}
-      exact={isRouterLink ? true : undefined}
       href={externalLinkTo}
+      {...extraProps}
     >
       <div className="link-text">
         {children}
