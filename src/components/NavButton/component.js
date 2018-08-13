@@ -2,7 +2,7 @@
 
 import * as R from 'ramda';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-static';
 import { withStyles, Button } from 'material-ui';
 
 import './styles.css';

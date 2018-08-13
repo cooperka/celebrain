@@ -3,7 +3,7 @@
 import * as R from 'ramda';
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-static';
 
 import './styles.css';
 
