@@ -2,19 +2,20 @@
 
 import * as R from 'ramda';
 import React from 'react';
-import { Router, Route, Switch } from 'react-static';
+import { Router } from 'react-static';
 import { Provider } from 'react-redux';
 import { createMuiTheme, withStyles, Reboot, MuiThemeProvider } from 'material-ui';
 
-import ReduxDevTools from '../ReduxDevTools/component';
+// This module is declared directly by react-static.
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies, import/extensions, $FlowFixMe
+import Routes from 'react-static-routes';
 
 import rootReducer from '../../reducers.index';
 import { configureStore } from '../../utils/setup-utils';
-import routes from '../../routes';
 
+import ReduxDevTools from '../ReduxDevTools/component';
 import NavBar from '../NavBar/component';
 import Footer from '../Footer/component';
-import NotFound from '../NotFound/component';
 
 import './styles.css';
 
@@ -37,21 +38,6 @@ if (module.hot) {
   });
 }
 
-/**
- * Render the first main route that matches the current path,
- * or NotFound if no match.
- */
-function renderRoutes() {
-  return (
-    <Switch>
-      {routes.map((route) => (
-        <Route key={route.path} exact path={route.path} component={route.component} />
-      ))}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 function App() {
   return (
     <Provider store={store}>
@@ -60,7 +46,7 @@ function App() {
           <div className="App">
             <Reboot />
             <NavBar />
-            {renderRoutes()}
+            <Routes />
             <Footer />
             <ReduxDevTools />
           </div>
