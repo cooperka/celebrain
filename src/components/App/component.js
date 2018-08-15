@@ -1,7 +1,7 @@
 // @flow
 
 import * as R from 'ramda';
-import React from 'react';
+import React, { Component } from 'react';
 import { Router } from 'react-static';
 import { Provider } from 'react-redux';
 import { createMuiTheme, withStyles, Reboot, MuiThemeProvider } from 'material-ui';
@@ -9,6 +9,8 @@ import { createMuiTheme, withStyles, Reboot, MuiThemeProvider } from 'material-u
 // This module is declared directly by react-static.
 // eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies, import/extensions, $FlowFixMe
 import Routes from 'react-static-routes';
+
+import { string } from '../../constants';
 
 import rootReducer from '../../reducers.index';
 import { configureStore } from '../../utils/setup-utils';
@@ -38,22 +40,40 @@ if (module.hot) {
   });
 }
 
-function App() {
-  return (
-    <Provider store={store}>
-      <MuiThemeProvider theme={theme}>
-        <Router>
-          <div className="App">
-            <Reboot />
-            <NavBar />
-            <Routes />
-            <Footer />
-            <ReduxDevTools />
-          </div>
-        </Router>
-      </MuiThemeProvider>
-    </Provider>
-  );
+type Props = {
+};
+
+class App extends Component<Props> {
+
+  /**
+   * Remove the statically injected CSS.
+   * https://material-ui.com/guides/server-rendering
+   */
+  componentDidMount() {
+    const jssStyles = document.getElementById(string.JSS_SERVER_SIDE_ID);
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <MuiThemeProvider theme={theme}>
+          <Router>
+            <div className="App">
+              <Reboot />
+              <NavBar />
+              <Routes />
+              <Footer />
+              <ReduxDevTools />
+            </div>
+          </Router>
+        </MuiThemeProvider>
+      </Provider>
+    );
+  }
+
 }
 
 const styles = () => ({

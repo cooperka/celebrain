@@ -18,6 +18,7 @@
     "ramda": "0.25.0",
     "react": "16.5.2",
     "react-dom": "16.5.2",
+    "react-jss": "8.6.1",
     "react-redux": "5.0.7",
     "react-static": "cooperka/react-static#2018-10-22-uglifyPlugin",
     "redux": "4.0.1",
