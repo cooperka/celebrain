@@ -16,5 +16,8 @@ body {
   font-size: 1.4rem;
   font-family: Roboto, sans-serif;
 
+  /* Always show vertical scrollbar to prevent jumpy navigation. */
+  overflow-y: scroll;
+
   background: #FFF;
 }
