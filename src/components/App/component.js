@@ -1,6 +1,7 @@
 // @flow
 
 import * as R from 'ramda';
+import classNames from 'classnames';
 import React, { Component } from 'react';
 import { Router } from 'react-static';
 import { Provider } from 'react-redux';
@@ -10,7 +11,8 @@ import { createMuiTheme, withStyles, Reboot, MuiThemeProvider } from 'material-u
 // eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies, import/extensions, $FlowFixMe
 import Routes from 'react-static-routes';
 
-import { string } from '../../constants';
+import { string, size } from '../../constants';
+import { mapKeysDeep } from '../../utils/object-utils';
 
 import rootReducer from '../../reducers.index';
 import { configureStore } from '../../utils/setup-utils';
@@ -19,10 +21,10 @@ import ReduxDevTools from '../ReduxDevTools/component';
 import NavBar from '../NavBar/component';
 import Footer from '../Footer/component';
 
-import { theme } from './theme';
+import { theme as appTheme } from './theme';
 import './styles.css';
 
-const muiTheme = createMuiTheme(theme);
+const muiTheme = createMuiTheme(appTheme);
 
 const store = configureStore(rootReducer);
 
@@ -36,6 +38,7 @@ if (module.hot) {
 }
 
 type Props = {
+  classes: Object,
 };
 
 class App extends Component<Props> {
@@ -52,11 +55,13 @@ class App extends Component<Props> {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
       <Provider store={store}>
         <MuiThemeProvider theme={muiTheme}>
           <Router>
-            <div className="App">
+            <div className={classNames(classes.toolbarPadding, classes.footerPadding, 'App')}>
               <Reboot />
               <NavBar />
               <Routes />
@@ -71,8 +76,18 @@ class App extends Component<Props> {
 
 }
 
-const styles = () => ({
-});
+const styles = (theme) => {
+  // Several CSS @media queries determine the toolbar height. Map these all to paddingTop.
+  const replaceWithPadding = (value, key) => (key === 'minHeight' ? 'paddingTop' : key);
+  const toolbarPadding = mapKeysDeep(theme.mixins.toolbar, replaceWithPadding);
+
+  return {
+    toolbarPadding,
+    footerPadding: {
+      paddingBottom: size.FOOTER_HEIGHT,
+    },
+  };
+};
 
 export default R.compose(
   withStyles(styles),
