@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import ReduxDevTools from '../components/ReduxDevTools/index';
+import ReduxDevTools from '../components/ReduxDevTools/component';
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 

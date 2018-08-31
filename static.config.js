@@ -14,19 +14,19 @@ export default {
   getRoutes: () => [
     {
       path: '/',
-      component: 'src/components/Home',
+      component: 'src/components/Home/component',
     },
     {
       path: '/game',
-      component: 'src/components/Game',
+      component: 'src/components/Game/component',
     },
     {
       path: '/about',
-      component: 'src/components/About',
+      component: 'src/components/About/component',
     },
     {
       is404: true,
-      component: 'src/components/NotFound',
+      component: 'src/components/NotFound/component',
     },
   ],
 

@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import { withStyles } from 'material-ui';
 import { connect } from 'react-redux';
 
-import Intro from './Intro';
-import Memorize from './Memorize';
-import Recall from './Recall';
-import Results from './Results';
+import Intro from './Intro/component';
+import Memorize from './Memorize/component';
+import Recall from './Recall/component';
+import Results from './Results/component';
 import { gameState } from './reducers';
 
 import imageData from '../../celebs.json';

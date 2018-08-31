@@ -5,15 +5,15 @@ import ReactDOM from 'react-dom';
 
 import 'typeface-roboto/index.css';
 
-import App from './components/App';
+import App from './components/App/component';
 
 import './styles.css';
 
 // Enable Hot Module Replacement (HMR) for rendering.
 if (module.hot) {
-  module.hot.accept('./components/App/index', () => {
+  module.hot.accept('./components/App/component', () => {
     // eslint-disable-next-line global-require
-    const UpdatedApp = require('./components/App/index').default;
+    const UpdatedApp = require('./components/App/component').default;
     renderRoot(UpdatedApp);
   });
 }

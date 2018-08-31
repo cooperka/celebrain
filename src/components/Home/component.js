@@ -4,7 +4,7 @@ import * as R from 'ramda';
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui';
 
-import NavButton from '../NavButton/index';
+import NavButton from '../NavButton/component';
 
 import './styles.css';
 

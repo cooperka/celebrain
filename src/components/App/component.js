@@ -6,15 +6,15 @@ import { Router, Route, Switch } from 'react-static';
 import { Provider } from 'react-redux';
 import { createMuiTheme, withStyles, Reboot, MuiThemeProvider } from 'material-ui';
 
-import ReduxDevTools from '../ReduxDevTools';
+import ReduxDevTools from '../ReduxDevTools/component';
 
 import rootReducer from '../../reducers.index';
 import { configureStore } from '../../utils/setup-utils';
 import routes from '../../routes';
 
-import NavBar from '../NavBar';
-import Footer from '../Footer';
-import NotFound from '../NotFound';
+import NavBar from '../NavBar/component';
+import Footer from '../Footer/component';
+import NotFound from '../NotFound/component';
 
 import './styles.css';
 

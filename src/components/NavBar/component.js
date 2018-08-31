@@ -7,7 +7,7 @@ import { withStyles, AppBar, Toolbar } from 'material-ui';
 import logo from '../../images/logo.svg';
 import routes from '../../routes';
 
-import NavButton from '../NavButton';
+import NavButton from '../NavButton/component';
 
 import './styles.css';
 
