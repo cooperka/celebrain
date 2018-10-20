@@ -12,15 +12,15 @@ import { gameState } from './reducers';
 import imageData from '../../celebs.json';
 import './styles.css';
 
-type Props = {
-  currState: any,
-};
-
 const gameComponent = {
   [gameState.INTRO]: Intro,
   [gameState.MEMORIZE]: Memorize,
   [gameState.RECALL]: Recall,
   [gameState.RESULTS]: Results,
+};
+
+type Props = {
+  currState: any,
 };
 
 class Game extends Component<Props> {

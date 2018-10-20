@@ -4,7 +4,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-static';
 import { Provider } from 'react-redux';
 import { Reboot } from 'material-ui';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 
 import ReduxDevTools from '../ReduxDevTools';
 
