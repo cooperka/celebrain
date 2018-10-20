@@ -1,6 +1,8 @@
 // @flow
 
+import * as R from 'ramda';
 import React, { Component } from 'react';
+import { withStyles } from 'material-ui';
 import { connect } from 'react-redux';
 
 import Intro from './Intro';
@@ -44,5 +46,11 @@ class Game extends Component<Props> {
 
 }
 
-// $FlowFixMe
-export default connect(Game.mapStateToProps)(Game);
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+  // $FlowFixMe
+  connect(Game.mapStateToProps),
+)(Game);

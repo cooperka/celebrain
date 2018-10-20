@@ -1,10 +1,10 @@
 // @flow
 
+import * as R from 'ramda';
 import React from 'react';
 import { Router, Route, Switch } from 'react-static';
 import { Provider } from 'react-redux';
-import { Reboot } from 'material-ui';
-import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
+import { createMuiTheme, withStyles, Reboot, MuiThemeProvider } from 'material-ui';
 
 import ReduxDevTools from '../ReduxDevTools';
 
@@ -70,4 +70,9 @@ function App() {
   );
 }
 
-export default App;
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+)(App);

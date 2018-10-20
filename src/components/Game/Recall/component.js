@@ -1,8 +1,9 @@
 // @flow
 
+import * as R from 'ramda';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField, Button } from 'material-ui';
+import { withStyles, TextField, Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
 import { next, changedInputText } from './actions';
@@ -81,4 +82,10 @@ class Recall extends Component<Props> {
 
 }
 
-export default connect(Recall.mapStateToProps, Recall.mapDispatchToProps)(Recall);
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+  connect(Recall.mapStateToProps, Recall.mapDispatchToProps),
+)(Recall);

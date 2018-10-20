@@ -1,7 +1,8 @@
 // @flow
 
+import * as R from 'ramda';
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui';
 
 import './styles.css';
 
@@ -10,12 +11,6 @@ type Props = {
   celeb: any,
   noLink: boolean,
 };
-
-const styles = (theme) => ({
-  shadowed: {
-    boxShadow: theme.shadows[2],
-  },
-});
 
 function CelebImage(props: Props) {
   const { classes, celeb, noLink } = props;
@@ -35,4 +30,12 @@ function CelebImage(props: Props) {
   );
 }
 
-export default withStyles(styles)(CelebImage);
+const styles = (theme) => ({
+  shadowed: {
+    boxShadow: theme.shadows[2],
+  },
+});
+
+export default R.compose(
+  withStyles(styles),
+)(CelebImage);

@@ -1,6 +1,8 @@
 // @flow
 
+import * as R from 'ramda';
 import React, { Component } from 'react';
+import { withStyles } from 'material-ui';
 
 import './styles.css';
 
@@ -57,4 +59,9 @@ class About extends Component<Props> {
 
 }
 
-export default About;
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+)(About);

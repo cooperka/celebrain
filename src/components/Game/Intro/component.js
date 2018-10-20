@@ -1,14 +1,13 @@
 // @flow
 
+import * as R from 'ramda';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  FormLabel,
-  FormControl,
-  FormGroup,
-  FormControlLabel,
-} from 'material-ui/Form';
-import { Button, Switch, Checkbox, TextField } from 'material-ui';
+  withStyles,
+  Button, Switch, Checkbox, TextField,
+  FormLabel, FormControl, FormGroup, FormControlLabel,
+} from 'material-ui';
 
 import { setNumCelebs, setOnlyFirstNames, setPopularity, setGameState } from '../actions';
 import { gameState } from '../reducers';
@@ -121,4 +120,10 @@ class Intro extends Component<Props> {
 
 }
 
-export default connect(Intro.mapStateToProps, Intro.mapDispatchToProps)(Intro);
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+  connect(Intro.mapStateToProps, Intro.mapDispatchToProps),
+)(Intro);

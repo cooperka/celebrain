@@ -1,8 +1,9 @@
 // @flow
 
+import * as R from 'ramda';
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'material-ui';
+import { withStyles, Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
 
@@ -75,4 +76,10 @@ class Results extends Component<Props> {
 
 }
 
-export default connect(Results.mapStateToProps, Results.mapDispatchToProps)(Results);
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+  connect(Results.mapStateToProps, Results.mapDispatchToProps),
+)(Results);

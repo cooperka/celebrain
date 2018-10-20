@@ -1,8 +1,9 @@
 // @flow
 
+import * as R from 'ramda';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'material-ui';
+import { withStyles, Button } from 'material-ui';
 
 import './styles.css';
 
@@ -39,4 +40,9 @@ function NavButton(props: Props) {
   );
 }
 
-export default NavButton;
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+)(NavButton);

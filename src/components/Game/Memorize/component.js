@@ -1,8 +1,9 @@
 // @flow
 
+import * as R from 'ramda';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'material-ui';
+import { withStyles, Button } from 'material-ui';
 
 import CelebImage from '../../CelebImage';
 
@@ -67,4 +68,10 @@ class Memorize extends Component<Props> {
 
 }
 
-export default connect(Memorize.mapStateToProps, Memorize.mapDispatchToProps)(Memorize);
+const styles = () => ({
+});
+
+export default R.compose(
+  withStyles(styles),
+  connect(Memorize.mapStateToProps, Memorize.mapDispatchToProps),
+)(Memorize);
