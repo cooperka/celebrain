@@ -16,7 +16,6 @@ exports[`renders 1`] = `
     className="MuiButtonBase-root-16 MuiButton-root-1"
     disabled={false}
     onBlur={[Function]}
-    onClick={undefined}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}

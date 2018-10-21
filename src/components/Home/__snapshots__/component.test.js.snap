@@ -24,7 +24,6 @@ exports[`renders 1`] = `
     <NavLink
       className="MuiButtonBase-root-16 MuiButton-root-1 NavButton bordered"
       exact={true}
-      href={undefined}
       onBlur={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}

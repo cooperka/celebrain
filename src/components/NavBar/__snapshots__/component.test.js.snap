@@ -22,7 +22,6 @@ exports[`renders 1`] = `
       <NavLink
         className="MuiButtonBase-root-53 MuiButton-root-38 NavButton "
         exact={true}
-        href={undefined}
         onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -53,7 +52,6 @@ exports[`renders 1`] = `
       <NavLink
         className="MuiButtonBase-root-53 MuiButton-root-38 NavButton "
         exact={true}
-        href={undefined}
         onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -84,7 +82,6 @@ exports[`renders 1`] = `
       <NavLink
         className="MuiButtonBase-root-53 MuiButton-root-38 NavButton "
         exact={true}
-        href={undefined}
         onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -128,7 +125,6 @@ exports[`renders 1`] = `
         rel="noopener noreferrer"
         tabIndex={0}
         target="_blank"
-        to={undefined}
       >
         <span
           className="MuiButton-label-39"

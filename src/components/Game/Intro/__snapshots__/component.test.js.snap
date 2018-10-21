@@ -23,8 +23,6 @@ exports[`renders 1`] = `
       className="MuiFormControlLabel-root-9"
     >
       <div
-        aria-describedby={undefined}
-        checked={undefined}
         className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 num-celebs"
         onBlur={[Function]}
         onFocus={[Function]}
@@ -37,20 +35,9 @@ exports[`renders 1`] = `
           <input
             aria-invalid={false}
             aria-required={false}
-            autoComplete={undefined}
-            autoFocus={undefined}
             className="MuiInput-input-21 MuiInput-inputType-24"
-            defaultValue={undefined}
             disabled={false}
-            id={undefined}
-            name={undefined}
             onChange={[Function]}
-            onKeyDown={undefined}
-            onKeyUp={undefined}
-            placeholder={undefined}
-            readOnly={undefined}
-            required={undefined}
-            rows={undefined}
             type="number"
             value={5}
           />
@@ -80,7 +67,6 @@ exports[`renders 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          role={undefined}
           tabIndex={null}
         >
           <span
@@ -90,15 +76,10 @@ exports[`renders 1`] = `
               className="MuiSwitch-icon-53"
             />
             <input
-              checked={undefined}
               className="MuiSwitchBase-input-61"
               disabled={false}
-              id={undefined}
-              name={undefined}
               onChange={[Function]}
-              tabIndex={undefined}
               type="checkbox"
-              value={undefined}
             />
           </span>
           <span
@@ -138,7 +119,6 @@ exports[`renders 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          role={undefined}
           tabIndex={null}
         >
           <span
@@ -147,7 +127,6 @@ exports[`renders 1`] = `
             <svg
               aria-hidden="true"
               className="MuiSvgIcon-root-87 MuiSvgIcon-fontSize-93"
-              color={undefined}
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -159,12 +138,8 @@ exports[`renders 1`] = `
               checked={true}
               className="MuiSwitchBase-input-61"
               disabled={false}
-              id={undefined}
-              name={undefined}
               onChange={[Function]}
-              tabIndex={undefined}
               type="checkbox"
-              value={undefined}
             />
           </span>
           <span
@@ -182,7 +157,6 @@ exports[`renders 1`] = `
       className="MuiButtonBase-root-71 MuiButton-root-94 start"
       disabled={false}
       onBlur={[Function]}
-      onClick={undefined}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
