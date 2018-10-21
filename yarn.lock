@@ -5341,10 +5341,10 @@ eslint-config-airbnb@17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-cooperka@0.2.10:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/eslint-config-cooperka/-/eslint-config-cooperka-0.2.10.tgz#c633ec46db9d1e7d941b72e5c7ec835f1eb9bfa2"
-  integrity sha512-QOQbR3riVHqp3zEXBTvvZZuUn4u69M711ERbnrckaTIyLGm7pcBBJKtEmK1mLQ10Ouf6meKrzsM7to8defFYVw==
+eslint-config-cooperka@0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/eslint-config-cooperka/-/eslint-config-cooperka-0.2.11.tgz#50f4e796c842adbbbd081c086b4a83cad1c0e953"
+  integrity sha512-zLk9hq7UK6xsmhRjqxPBN1rxmjnr+FLaUHb9A6l3HeU3A5G7gy6RwjvDf8+3h3OT2N4tnmA4B6Bc520FNhSB0Q==
 
 eslint-config-react-app@^3.0.4:
   version "3.0.4"

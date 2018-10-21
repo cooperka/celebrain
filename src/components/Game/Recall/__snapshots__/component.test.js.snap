@@ -63,8 +63,7 @@ exports[`renders 1`] = `
       <span
         className="MuiButton-label-22"
       >
-        Next 
-        (1/1)
+        Next (1/1)
       </span>
       <span
         className="MuiTouchRipple-root-38"

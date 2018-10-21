@@ -53,7 +53,9 @@ class Results extends Component<Props> {
           <CelebImage celeb={celeb} />
         </div>
         <div className="grid-item">
-          <div className={`guess-text ${guessColor}`}>{isMatch ? '✓' : '❌'} {guess}</div>
+          <div className={`guess-text ${guessColor}`}>
+            {`${isMatch ? '✓' : '❌'} ${guess}`}
+          </div>
           {isMatch ? null : <div className="guess-text">{actualName}</div>}
         </div>
       </Fragment>

@@ -60,7 +60,7 @@ class Memorize extends Component<Props> {
           </div>
         </div>
         <div className="section">
-          <Button onClick={handleNext}>Next {`(${currIndex + 1}/${numItems})`}</Button>
+          <Button onClick={handleNext}>{`Next (${currIndex + 1}/${numItems})`}</Button>
         </div>
       </div>
     );

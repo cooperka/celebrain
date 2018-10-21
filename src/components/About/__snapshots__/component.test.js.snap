@@ -20,11 +20,7 @@ exports[`renders 1`] = `
     <div
       className="description"
     >
-      I
-      '
-      ve always had a difficult time remembering peoples names -- especially movie characters and celebrities -- so I
-      '
-      ve recently been trying harder to improve. This game is a fun attempt at solving two problems at once.
+       I've always had a difficult time remembering peoples names -- especially movie characters and celebrities -- so I've recently been trying harder to improve. This game is a fun attempt at solving two problems at once.
     </div>
   </div>
   <div
@@ -38,8 +34,7 @@ exports[`renders 1`] = `
     <div
       className="description"
     >
-      Currently, the pool of celebrities comes from the Wikipedia categories for American
-       
+      Currently, the pool of celebrities comes from the Wikipedia categories for American 
       <a
         href="https://en.wikipedia.org/wiki/Category:American_male_film_actors"
       >
