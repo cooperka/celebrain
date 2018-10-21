@@ -43,5 +43,11 @@
     "react-scripts": "2.0.5",
     "react-test-renderer": "16.5.2",
     "serve": "10.0.2"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
