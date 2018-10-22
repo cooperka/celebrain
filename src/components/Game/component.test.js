@@ -8,10 +8,10 @@ import Game from './component';
 
 import { gameState } from './reducers';
 
-jest.mock('./Intro', () => 'Intro');
-jest.mock('./Memorize', () => 'Memorize');
-jest.mock('./Recall', () => 'Recall');
-jest.mock('./Results', () => 'Results');
+jest.mock('./Intro/component', () => 'Intro');
+jest.mock('./Memorize/component', () => 'Memorize');
+jest.mock('./Recall/component', () => 'Recall');
+jest.mock('./Results/component', () => 'Results');
 
 describe('renders in state', () => {
   R.flip(R.forEachObjIndexed)(gameState, (state) => {
