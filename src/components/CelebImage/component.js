@@ -7,8 +7,8 @@ import { withStyles } from 'material-ui';
 import './styles.css';
 
 type Props = {
-  classes: any,
-  celeb: any,
+  classes: Object,
+  celeb: Object,
   noLink: boolean,
 };
 
