@@ -1,6 +1,6 @@
-import Home from './components/Home/component';
-import Game from './components/Game/component';
-import About from './components/About/component';
+import Home from '../Home/component';
+import Game from '../Game/component';
+import About from '../About/component';
 
 // Note: Make sure to also update static.config routes.
 const routes = [

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { withStyles, AppBar, Toolbar } from 'material-ui';
 
 import logo from '../../images/logo.svg';
-import routes from '../../routes';
+import routes from './routes';
 
 import NavButton from '../NavButton/component';
 
