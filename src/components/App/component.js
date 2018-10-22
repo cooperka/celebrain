@@ -19,15 +19,10 @@ import ReduxDevTools from '../ReduxDevTools/component';
 import NavBar from '../NavBar/component';
 import Footer from '../Footer/component';
 
+import { theme } from './theme';
 import './styles.css';
 
-const theme = createMuiTheme({
-  // https://material-ui-next.com/customization/themes/#typography
-  typography: {
-    // Account for base font-size of 62.5%.
-    htmlFontSize: 10,
-  },
-});
+const muiTheme = createMuiTheme(theme);
 
 const store = configureStore(rootReducer);
 
@@ -59,7 +54,7 @@ class App extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={muiTheme}>
           <Router>
             <div className="App">
               <Reboot />
