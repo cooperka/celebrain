@@ -17,7 +17,6 @@ export default {
     title: 'NeuroName',
   }),
 
-  // Note: Make sure to also update routes.js routes.
   getRoutes: () => [
     {
       path: '/',
