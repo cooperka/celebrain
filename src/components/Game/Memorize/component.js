@@ -32,7 +32,7 @@ class Memorize extends Component<Props> {
     };
   }
 
-  static mapDispatchToProps(dispatch) {
+  static mapDispatchToProps(dispatch: (Object) => void) {
     return {
       handleNext: () => {
         dispatch(next());

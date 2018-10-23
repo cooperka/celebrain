@@ -35,7 +35,7 @@ class Intro extends Component<Props> {
     };
   }
 
-  static mapDispatchToProps(dispatch) {
+  static mapDispatchToProps(dispatch: (Object) => void) {
     return {
       handleSetNumCelebs: (numCelebs) => {
         dispatch(setNumCelebs(numCelebs));

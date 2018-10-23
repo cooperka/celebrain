@@ -32,7 +32,7 @@ class Results extends Component<Props> {
     };
   }
 
-  static mapDispatchToProps(dispatch) {
+  static mapDispatchToProps(dispatch: (Object) => void) {
     return {
       handleRestart: () => {
         dispatch(restart());
