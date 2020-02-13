@@ -11,7 +11,7 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 
 export default {
 
-  siteRoot: IS_DEV ? 'http://localhost:3000' : 'https://neuroname.org',
+  siteRoot: IS_DEV ? 'http://localhost:3000' : 'https://name.cooperka.com',
 
   getSiteData: () => ({
     title: 'NeuroName',
