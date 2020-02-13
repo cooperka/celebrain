@@ -5,7 +5,13 @@ exports[`renders 1`] = `
   className="Footer-footer-1 Footer"
 >
   <div>
-    © 2018 Kevin Cooper
+    © 2020 Kevin Cooper •
+     
+    <a
+      href="https://github.com/cooperka/neuro-name"
+    >
+      View source
+    </a>
   </div>
   <div>
     Images are sourced from Wikipedia and may be subject to copyright.
